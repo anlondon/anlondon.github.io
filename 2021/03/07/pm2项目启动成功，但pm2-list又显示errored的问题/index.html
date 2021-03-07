@@ -9,7 +9,7 @@
     
     <title>
         
-            Archive |
+            pm2项目启动成功，但pm2 list又显示errored的问题 |
         
         一座浮岛
     </title>
@@ -62,7 +62,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 归档
@@ -112,7 +112,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">归档</a>
                 </li>
             
@@ -142,59 +142,99 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">pm2项目启动成功，但pm2 list又显示errored的问题</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar_my.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">anlodnon</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-03-07 11:16:00
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">[5]</span>
-            </div>
-            <ul class="article-list">
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/03/07/pm2%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BD%86pm2-list%E5%8F%88%E6%98%BE%E7%A4%BAerrored%E7%9A%84%E9%97%AE%E9%A2%98/"
-                        >pm2项目启动成功，但pm2 list又显示errored的问题</a>
-                        <span class="article-date">03-07</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/03/07/node%E7%89%88%E6%9C%AC%E5%AF%BC%E8%87%B4%E7%9A%84%E9%94%99%E8%AF%AF/"
-                        >node版本导致的错误</a>
-                        <span class="article-date">03-07</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/03/07/hexo-admin%E5%90%8E%E5%8F%B0%E6%9B%B4%E6%96%B0%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/"
-                        >hexo-admin后台更新静态文件</a>
-                        <span class="article-date">03-07</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/03/07/md%E5%BC%95%E7%94%A8base64%E5%9B%BE%E7%89%87/"
-                        >md引用base64图片</a>
-                        <span class="article-date">03-07</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/03/06/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">03-06</span>
+                    <li>
+                        <a href="/categories/pm2/">pm2</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+    
+
+    
+    
+    
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <ul>
+<li><p>首先先判断入口js文件app.js在node上是否能正确运行，确定是否缺少依赖。如若缺少则安装对应的依赖再进行pm2管理。</p>
+</li>
+<li><p>如若node能正常运行，pm2也能正常启动，但在使用pm2 list命令查看列表时项目出现errored，则尝试以下两行命令</p>
+</li>
+</ul>
+<p>来自anlondon博客</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep pm2 (查看pm2进程占用情况)</span><br><span class="line">kill -9  14360 (这个数值要依据你上面命令返回的进程id进行填写)</span><br></pre></td></tr></table></figure>
+
+<p>杀死pm2进程之后再次重启项目，解决问题。</p>
+<ul>
+<li>也可以通过<code>pm2 show id</code>来查看详细的错误信息，进行对应的处理</li>
+</ul>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/03/07/node%E7%89%88%E6%9C%AC%E5%AF%BC%E8%87%B4%E7%9A%84%E9%94%99%E8%AF%AF/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">node版本导致的错误</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -222,6 +262,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">

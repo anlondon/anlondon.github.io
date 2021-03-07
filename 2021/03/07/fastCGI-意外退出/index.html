@@ -9,7 +9,7 @@
     
     <title>
         
-            建立局域网git仓库 |
+            fastCGI 意外退出 |
         
         一座浮岛
     </title>
@@ -145,7 +145,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">建立局域网git仓库</span>
+            <span class="title-hover-animation">fastCGI 意外退出</span>
         </div>
 
         
@@ -163,7 +163,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-07 11:41:00
+        <i class="fas fa-edit"></i>&nbsp;2021-03-07 18:38:00
     </span>
     
         <span class="article-categories article-meta-item">
@@ -171,7 +171,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Git/">Git</a>&nbsp;
+                        <a href="/categories/PHP/">PHP</a>&nbsp;
                     </li>
                 
             </ul>
@@ -191,21 +191,26 @@
         
 
         <div class="article-content markdown-body">
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h4 id="建立本地git仓库并共享"><a href="#建立本地git仓库并共享" class="headerlink" title="建立本地git仓库并共享"></a>建立本地git仓库并共享</h4><ol>
-<li>新建一个文件夹，路径不要太长，最好是硬盘下的一级文件夹</li>
-<li>使用<code>git init --bare</code>建立一个仓库，该指令表示建立一个 独立的仓库 使用git init –bare建立一个本地裸仓库</li>
-<li>共享该目录，添加guest访客并给予读写权限<ul>
-<li>右键该目录-&gt;属性-&gt;共享-&gt;高级共享，勾选共享此文件夹</li>
-<li>点击权限-&gt;给Everyone完全控制的权限-&gt;点击确定-&gt;点击应用<br>来自anlondon博客<br>来自anlondon博客    </li>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>系 统：Windows server 2008<br>服务器：IIS7<br>php 5.5</p>
+<p>来自anlondon博客<br><img src="http://anlondon.cn:4000/2021/01/29/fastCGI-%E6%84%8F%E5%A4%96%E9%80%80/pasted-2.png"></p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h4 id="情况一：程序导致的问题"><a href="#情况一：程序导致的问题" class="headerlink" title="情况一：程序导致的问题"></a>情况一：程序导致的问题</h4><p>查询资料时，iis7自身是集成了php_pdo.dll的，同时查看服务器其他的项目，都运行正常，说明可能是项目本身的原因，加之iis7与fast-cgi是单线程</p>
+<p>于是重启服务器(开关机的那种)，访问项目其他页面，发现访问正常，只有首页<strong>加载很慢且加载不全</strong>，查看页面代码，发现因为客户修改后台数据导致程序中出现了一个<strong>死循环</strong>；</p>
+<p>修改相应的代码，解决。</p>
+<h4 id="情况二：缺失相关文件"><a href="#情况二：缺失相关文件" class="headerlink" title="情况二：缺失相关文件"></a>情况二：缺失相关文件</h4><p><strong>在iis服务器除了php_pdo外</strong></p>
+<p>进入服务器,查看资源管理器，右键<code>php-cgi.exe</code>-&gt;所在位置</p>
+<p>来自anlondon博客<br><a class="link"   target="_blank" rel="noopener" href="http://anlondon.cn:4000/2021/01/29/fastCGI-%E6%84%8F%E5%A4%96%E9%80%80/pasted-0.png" ><i class="fas fa-external-link-alt"></i></a></p>
+<p>双击php.exe、php-cgi.php,出现下面的提示</p>
+<p>来自anlondon博客<br><a class="link"   target="_blank" rel="noopener" href="http://anlondon.cn:4000/2021/01/29/fastCGI-%E6%84%8F%E5%A4%96%E9%80%80/pasted-1.png" ><i class="fas fa-external-link-alt"></i></a></p>
+<p>去下载对应版本的php_xxx.dll即可。</p>
+<hr>
+<p><strong>相关资料</strong>:</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.jb51.net/dll/php_pdo.dll.html" >php_pdo.dll下载并配置|脚本之家<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/yuweiqing120/article/details/44096721" >64位IIS7下的PHP 5.4配置及如何连接SQL Server 2008<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/ltylove2007/article/details/55098535" >“php-cgi.exe - FastCGI 进程意外退出” 的解决办法 |CSDN ltylove2007<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://forums.iis.net/t/1221836.aspx?php+pdo+drivers+won+t+load+on+Windows+Server+2008+using+IIS+Fast+CGI" >php pdo drivers won’t load on Windows Server 2008 using IIS Fast-CGI<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9954623/getting-microsoft-php-pdo-for-sql-server-working" >Getting Microsoft PHP PDO for SQL Server working |stackOverflow<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
-</li>
-<li>进入一个本地的项目，并且提交到本地仓库中<br> 来自anlondon博客</li>
-<li>使用ipconfig查看本机的局域网ip,格式为 192.168.0.xxx</li>
-</ol>
-<h4 id="在局域网的另一台电脑上拉取项目"><a href="#在局域网的另一台电脑上拉取项目" class="headerlink" title="在局域网的另一台电脑上拉取项目"></a>在局域网的另一台电脑上拉取项目</h4><ol>
-<li>进入网络，可以看到共享的仓库<br> 来自anlondon博客</li>
-<li><code>git clone //192.168.0.xxx/test.git</code>或者<code>git pull //192.168.0.xxx</code>来拉取项目<br> 来自anlondon博客</li>
-</ol>
 
         </div>
 
@@ -217,13 +222,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/03/07/%E4%B8%BAHexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%84%9A%E6%B3%A8%E6%8F%92%E4%BB%B6/"
+                           href="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY%EF%BC%89/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">为Hexo博客添加脚注插件</span>
+                                <span class="post-nav-title-item">MySQL常见的三种存储引擎（InnoDB、MyISAM、MEMORY）</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -233,10 +238,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/03/07/pm2%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BD%86pm2-list%E5%8F%88%E6%98%BE%E7%A4%BAerrored%E7%9A%84%E9%97%AE%E9%A2%98/"
+                           href="/2021/03/07/%E5%B0%91-%E3%80%8Csecure%E3%80%8D-cookie-%E5%B7%B2%E6%8B%92%E7%BB%9D-%E2%80%9Cci-session%E2%80%9D/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">pm2项目启动成功，但pm2 list又显示errored的问题</span>
+                                <span class="post-nav-title-item">缺少 「secure」 cookie 已拒绝 “ci-session”</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">

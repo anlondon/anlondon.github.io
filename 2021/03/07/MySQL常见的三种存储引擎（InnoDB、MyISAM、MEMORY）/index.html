@@ -9,7 +9,7 @@
     
     <title>
         
-            建立局域网git仓库 |
+            MySQL常见的三种存储引擎（InnoDB、MyISAM、MEMORY） |
         
         一座浮岛
     </title>
@@ -145,7 +145,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">建立局域网git仓库</span>
+            <span class="title-hover-animation">MySQL常见的三种存储引擎（InnoDB、MyISAM、MEMORY）</span>
         </div>
 
         
@@ -163,7 +163,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-07 11:41:00
+        <i class="fas fa-edit"></i>&nbsp;2021-03-07 18:44:00
     </span>
     
         <span class="article-categories article-meta-item">
@@ -171,7 +171,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Git/">Git</a>&nbsp;
+                        <a href="/categories/MySql/">MySql</a>&nbsp;
                     </li>
                 
             </ul>
@@ -191,22 +191,43 @@
         
 
         <div class="article-content markdown-body">
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h4 id="建立本地git仓库并共享"><a href="#建立本地git仓库并共享" class="headerlink" title="建立本地git仓库并共享"></a>建立本地git仓库并共享</h4><ol>
-<li>新建一个文件夹，路径不要太长，最好是硬盘下的一级文件夹</li>
-<li>使用<code>git init --bare</code>建立一个仓库，该指令表示建立一个 独立的仓库 使用git init –bare建立一个本地裸仓库</li>
-<li>共享该目录，添加guest访客并给予读写权限<ul>
-<li>右键该目录-&gt;属性-&gt;共享-&gt;高级共享，勾选共享此文件夹</li>
-<li>点击权限-&gt;给Everyone完全控制的权限-&gt;点击确定-&gt;点击应用<br>来自anlondon博客<br>来自anlondon博客    </li>
-</ul>
-</li>
-<li>进入一个本地的项目，并且提交到本地仓库中<br> 来自anlondon博客</li>
-<li>使用ipconfig查看本机的局域网ip,格式为 192.168.0.xxx</li>
-</ol>
-<h4 id="在局域网的另一台电脑上拉取项目"><a href="#在局域网的另一台电脑上拉取项目" class="headerlink" title="在局域网的另一台电脑上拉取项目"></a>在局域网的另一台电脑上拉取项目</h4><ol>
-<li>进入网络，可以看到共享的仓库<br> 来自anlondon博客</li>
-<li><code>git clone //192.168.0.xxx/test.git</code>或者<code>git pull //192.168.0.xxx</code>来拉取项目<br> 来自anlondon博客</li>
-</ol>
-
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-0.png" alt="一座浮岛"></p>
+<blockquote>
+<p>转载：<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/yuxiuyan/p/6511837.html" >MySQL常见的三种存储引擎（InnoDB、MyISAM、MEMORY） |博客园 my笔触<i class="fas fa-external-link-alt"></i></a><br>作者：于果</p>
+</blockquote>
+<p>MySQL是我们经常使用的数据库处理系统（DBMS），不知小伙伴们有没有注意过其中的“存储引擎”（storage_engine）呢？有时候面试题中也会问道MySQL几种常用的存储引擎的区别。这次就简短侃一下存储引擎那些事儿。</p>
+<p><img src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-1.png" alt="一座浮岛"></p>
+<blockquote>
+<p>引擎（Engine）是电子平台上开发程序或系统的<span style="color:red">核心组件</span>。利用引擎，开发者可迅速建立、铺设程序所需的功能，或利用其辅助程序的运转。一般而言，引擎是一个程序或一套系统的支持部分。常见的程序引擎有游戏引擎，搜索引擎，杀毒引擎等。</p>
+</blockquote>
+<p>Ok，我们知道了，引擎就是一个程序的核心组件。</p>
+<p>简单来说，存储引擎就是指<span style="color:red">表的类型以及表在计算机上的存储方式</span>。</p>
+<p>存储引擎的概念是MySQL的特点，Oracle中没有专门的存储引擎的概念，Oracle有OLTP和OLAP模式的区分。不同的存储引擎决定了MySQL数据库中的表可以用不同的方式来存储。我们可以根据数据的特点来选择不同的存储引擎。</p>
+<p>在MySQL中的存储引擎有很多种，可以通过“SHOW ENGINES”语句来查看。下面重点关注InnoDB、MyISAM、MEMORY这三种。</p>
+<p><span style="font-size: 18pt; font-family: 楷体">一.InnoDB存储引擎</span></p>
+<p>InnoDB给MySQL的表提供了<strong>事务处理、回滚、崩溃修复能力</strong>和<strong>多版本并发控制</strong>的事务安全。在MySQL从3.23.34a开始包含InnnoDB。它是MySQL上第一个提供外键约束的表引擎。而且InnoDB对事务处理的能力，也是其他存储引擎不能比拟的。靠后版本的MySQL的默认存储引擎就是InnoDB。</p>
+<p>InnoDB存储引擎总支持<strong>AUTO_INCREMENT</strong>。自动增长列的值不能为空，并且值必须唯一。MySQL中规定自增列必须为主键。在插入值的时候，如果自动增长列不输入值，则插入的值为自动增长后的值；如果输入的值为0或空（NULL），则插入的值也是自动增长后的值；如果插入某个确定的值，且该值在前面没有出现过，就可以直接插入。</p>
+<p>InnoDB还支持<strong>外键（FOREIGN KEY）</strong>。外键所在的表叫做子表，外键所依赖（REFERENCES）的表叫做父表。父表中被字表外键关联的字段必须为主键。当删除、更新父表中的某条信息时，子表也必须有相应的改变，这是数据库的<strong>参照完整性规则</strong>。</p>
+<p>InnoDB中，创建的表的表结构存储在_.frm_文件中（我觉得是frame的缩写吧）。数据和索引存储在innodb_data_home_dir和innodb_data_file_path定义的表空间中。</p>
+<p>InnoDB的优势在于<u>提供了良好的事务处理、崩溃修复能力和并发控制</u>。缺点是<u>读写效率较差，占用的数据空间相对较大</u>。</p>
+<p><span style="font-size: 18pt; font-family: 楷体">二.MyISAM存储引擎</span></p>
+<p>MyISAM是MySQL中常见的存储引擎，曾经是MySQL的默认存储引擎。MyISAM是基于ISAM引擎发展起来的，增加了许多有用的扩展。</p>
+<p>MyISAM的表存储成3个文件。文件的名字与表名相同。拓展名为_frm、MYD、MYI_。其实，frm文件存储表的结构；MYD文件存储数据，是MYData的缩写；MYI文件存储索引，是MYIndex的缩写。</p>
+<p>基于MyISAM存储引擎的表支持3种不同的存储格式。包括静态型、动态型和压缩型。其中，静态型是MyISAM的默认存储格式，它的字段是固定长度的；动态型包含变长字段，记录的长度不是固定的；压缩型需要用到myisampack工具，占用的磁盘空间较小。</p>
+<p>MyISAM的优势在于<u>占用空间小，处理速度快</u>。缺点是<u>不支持事务的完整性和并发性</u>。</p>
+<p><span style="font-size: 18pt; font-family: 楷体">三.MEMORY存储引擎</span></p>
+<p>MEMORY是MySQL中一类特殊的存储引擎。它使用存储在内存中的内容来创建表，而且<strong>数据全部放在内存中</strong>。这些特性与前面的两个很不同。</p>
+<p>每个基于MEMORY存储引擎的表实际对应一个磁盘文件。该文件的文件名与表名相同，类型为_frm_类型。该文件中只存储表的结构。而其数据文件，都是存储在内存中，这样有利于数据的快速处理，提高整个表的效率。值得注意的是，服务器需要有足够的内存来维持MEMORY存储引擎的表的使用。如果不需要了，可以释放内存，甚至删除不需要的表。</p>
+<p>MEMORY默认使用哈希索引。速度比使用B型树索引快。当然如果你想用B型树索引，可以在创建索引时指定。</p>
+<p>注意，MEMORY用到的很少，因为它是把数据存到内存中，如果内存出现异常就会影响数据。如果重启或者关机，所有数据都会消失。因此，基于MEMORY的表的生命周期很短，一般是一次性的。</p>
+<p><span style="font-size: 18pt; font-family: 楷体">四.怎样选择存储引擎</span></p>
+<p>在实际工作中，选择一个合适的存储引擎是一个比较复杂的问题。每种存储引擎都有自己的优缺点，不能笼统地说谁比谁好。</p>
+<p><img src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-2.png" alt="MySQL常见的三种存储引擎 |博客园 my笔触"></p>
+<p><u><strong>InnoDB</strong></u>：支持事务处理，支持外键，支持崩溃修复能力和并发控制。如果需要<strong>对事务的完整性要求比较高</strong>（比如银行），<strong>要求实现并发控制</strong>（比如售票），那选择InnoDB有很大的优势。如果需要<strong>频繁的更新、删除</strong>操作的数据库，也可以选择InnoDB，因为支持事务的提交（commit）和回滚（rollback）。</p>
+<p><u><strong>MyISAM</strong></u>：插入数据快，空间和内存使用比较低。如果表主要是<strong>用于插入新记录和读出记录</strong>，那么选择MyISAM能实现处理高效率。如果应用的完整性、并发性要求比 较低，也可以使用。</p>
+<p><u><strong>MEMORY</strong></u>：所有的数据都在内存中，数据的处理速度快，但是安全性不高。如果需要<strong>很快的读写速度</strong>，对数据的安全性要求较低，可以选择MEMOEY。它对表的大小有要求，不能建立太大的表。所以，这类数据库只使用在相对较小的数据库表。</p>
+<p>注意，同一个数据库也可以使用多种存储引擎的表。如果一个表要求比较高的事务处理，可以选择InnoDB。这个数据库中可以将查询要求比较高的表选择MyISAM存储。如果该数据库需要一个用于查询的临时表，可以选择MEMORY存储引擎。</p>
+<center>__EOF__</center>
         </div>
 
         
@@ -217,13 +238,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/03/07/%E4%B8%BAHexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%84%9A%E6%B3%A8%E6%8F%92%E4%BB%B6/"
+                           href="/2021/03/07/xdebug%E6%96%AD%E6%8E%89%E8%B0%83%E8%AF%95%E7%BB%8F%E5%B8%B8%E6%97%A0%E6%95%85%E6%96%AD%E5%BC%80/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">为Hexo博客添加脚注插件</span>
+                                <span class="post-nav-title-item">xdebug断掉调试经常无故断开</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -233,10 +254,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/03/07/pm2%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BD%86pm2-list%E5%8F%88%E6%98%BE%E7%A4%BAerrored%E7%9A%84%E9%97%AE%E9%A2%98/"
+                           href="/2021/03/07/fastCGI-%E6%84%8F%E5%A4%96%E9%80%80%E5%87%BA/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">pm2项目启动成功，但pm2 list又显示errored的问题</span>
+                                <span class="post-nav-title-item">fastCGI 意外退出</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">

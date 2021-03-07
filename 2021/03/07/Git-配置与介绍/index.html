@@ -157,7 +157,7 @@
                     <div class="author">
                         <span class="name">anlodnon</span>
                         
-                            <span class="author-label">Lv2</span>
+                            <span class="author-label">Lv3</span>
                         
                     </div>
                     <div class="meta-info">
@@ -250,14 +250,14 @@
 <ul>
 <li><code># git init</code>即可在当前项目中生成一个.git目录</li>
 <li><code># git add README.md</code> 文件添加到暂存区(本地必须存在该文件)。文件编码：<code>utf-8notBOM</code></li>
-<li><code># git commit -m &quot;add a readme file&quot;</code>提交文件到仓库，””中为本次提交说明信息[^返回信息]</li>
+<li><code># git commit -m &quot;add a readme file&quot;</code>提交文件到仓库，””中为本次提交说明信息<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="如果提交无误，则会返回【create mode 100644 readme.md】,其中100表示文件为普通文件，644表示权限">[1]</span></a></sup></li>
 <li><code># git log</code> 查看历史提交记录,从近到远排序，commit后为提交的唯一hashId Author提交作者，Date提交时间，以及提交说明 </li>
 </ul>
 </li>
 <li><p><strong>Git -查看状态</strong></p>
 <ul>
-<li><code># git status</code> 查看git状态，出现的提示[^出现的提示]</li>
-<li>文件的两种状态[^文件的两种状态]</li>
+<li><code># git status</code> 查看git状态，出现的提示<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="'on branch master' 表示处于一个分支上；'Untracked files'表示下面红色的文件/文件夹是没有添加到暂存区的；'changes to be committed'表示新添加到暂存区的文件">[2]</span></a></sup></li>
+<li>文件的两种状态<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="当一个文件已经被添加到暂存区(HEAD)后，这时再修改该文件，`# git status`就会看到该文件的两种状态，一个未提交到仓库(绿色)，一个未添加到暂存区。">[3]</span></a></sup></li>
 </ul>
 </li>
 <li><p><strong>Git -取消暂存</strong></p>
@@ -288,7 +288,7 @@
 </li>
 <li><code># git reset --mixed HEAD~</code><ul>
 <li><code>--mixed</code>默认指令，不加也可</li>
-<li>移动HEAD<a href="%E8%BF%99%E9%87%8C%E7%9A%84HEAD%E8%A1%A8%E7%A4%BA%E6%8C%87%E9%92%88%EF%BC%8C%E8%A1%A8%E7%A4%BA%E6%8C%87%E5%90%91%E6%9F%90%E4%B8%AA%E5%88%86%E6%94%AF%E3%80%82HEAD~%E8%A1%A8%E7%A4%BA%E6%8C%87%E5%90%91%E4%B8%8A%E4%B8%80%E4%B8%AA%E5%88%86%E6%94%AF%EF%BC%8C**%E5%B9%B6%E8%A6%86%E7%9B%96%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6**HEAD~~%E8%A1%A8%E7%A4%BA%E5%9B%9E%E9%80%802%E4%B8%AA%E7%89%88%E6%9C%AC%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BD%BF%E7%94%A8HREAD~2%E8%A1%A8%E7%A4%BA">^HEAD</a>的指向，将其指向指定的快照<a href="%E7%89%88%E6%9C%AC">^快照</a></li>
+<li>移动HEAD<sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="这里的HEAD表示指针，表示指向某个分支。HEAD~表示指向上一个分支，**并覆盖本地文件**HEAD~~表示回退2个版本，也可使用HREAD~2表示">[4]</span></a></sup>的指向，将其指向指定的快照<sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="每一个版本称为一个快照">[5]</span></a></sup></li>
 <li>将HEAD(指针)移动后指向的快照 <strong>回滚到暂存区</strong>，工作目录不受影响</li>
 </ul>
 </li>
@@ -315,23 +315,32 @@
 </li>
 <li><strong>Git -回滚个别文件</strong><ul>
 <li><code># git reset 版本快照 文件名/路径</code>因为没有HEAD指令，所以不会移动HEAD   </li>
-<li><img src="/2021/03/07/Git-%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BB%8B/pasted-0.png" alt="一座浮岛"><sup id="fnref:1"><a href="#fn:1" rel="footnote">&lt;span class=”hint–top hint–error hint–medium hint–rounded hint–bounce” aria-label=”fasfdsafdsa<br>[^返回信息]: 如果提交无误，则会返回【create mode 100644 readme.md】,其中100表示文件为普通文件，644表示权限<br>[^出现的提示]: ‘on branch master’ 表示处于一个分支上；’Untracked files’表示下面红色的文件/文件夹是没有添加到暂存区的；’changes to be committed’表示新添加到暂存区的文件<br>[^文件的两种状态]: 当一个文件已经被添加到暂存区(HEAD)后，这时再修改该文件，<code># git status</code>就会看到该文件的两种状态，一个未提交到仓库(绿色)，一个未添加到暂存区。</li>
+<li><img src="/2021/03/07/Git-%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BB%8B/pasted-0.png" alt="一座浮岛"></li>
 </ul>
 </li>
 </ul>
-<p>[^快照]: 每一个版本称为一个快照”&gt;[1]</span></a></sup></p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">fasfdsafdsa
-[^返回信息]: 如果提交无误，则会返回【create mode 100644 readme.md】,其中100表示文件为普通文件，644表示权限
-[^出现的提示]: 'on branch master' 表示处于一个分支上；'Untracked files'表示下面红色的文件/文件夹是没有添加到暂存区的；'changes to be committed'表示新添加到暂存区的文件
-[^文件的两种状态]: 当一个文件已经被添加到暂存区(HEAD)后，这时再修改该文件，<code># git status</code>就会看到该文件的两种状态，一个未提交到仓库(绿色)，一个未添加到暂存区。
-[^HEAD]: 这里的HEAD表示指针，表示指向某个分支。HEAD~表示指向上一个分支，<strong>并覆盖本地文件</strong>HEAD~~表示回退2个版本，也可使用HREAD~2表示
-[^快照]: 每一个版本称为一个快照<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">如果提交无误，则会返回【create mode 100644 readme.md】,其中100表示文件为普通文件，644表示权限<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">'on branch master' 表示处于一个分支上；'Untracked files'表示下面红色的文件/文件夹是没有添加到暂存区的；'changes to be committed'表示新添加到暂存区的文件<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">当一个文件已经被添加到暂存区(HEAD)后，这时再修改该文件，<code># git status</code>就会看到该文件的两种状态，一个未提交到仓库(绿色)，一个未添加到暂存区。<a href="#fnref:3" rev="footnote"> ↩</a></span></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">4.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">这里的HEAD表示指针，表示指向某个分支。HEAD~表示指向上一个分支，<strong>并覆盖本地文件</strong>HEAD~~表示回退2个版本，也可使用HREAD~2表示<a href="#fnref:4" rev="footnote"> ↩</a></span></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">5.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">版本<a href="#fnref:5" rev="footnote"> ↩</a></span></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">5.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">每一个版本称为一个快照<a href="#fnref:5" rev="footnote"> ↩</a></span></li></ol></div></div>
         </div>
 
         
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/03/07/hexo-%E7%BB%99%E6%96%87%E7%AB%A0%E4%B8%AD%E8%8B%B1%E6%96%87%E6%B7%BB%E5%8A%A0%E7%A9%BA%E6%A0%BC/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">hexo 给文章中英文添加空格</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">

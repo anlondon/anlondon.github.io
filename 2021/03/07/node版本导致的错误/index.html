@@ -157,7 +157,7 @@
                     <div class="author">
                         <span class="name">anlodnon</span>
                         
-                            <span class="author-label">Lv1</span>
+                            <span class="author-label">Lv2</span>
                         
                     </div>
                     <div class="meta-info">
@@ -191,17 +191,17 @@
         
 
         <div class="article-content markdown-body">
-            <h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><p><code>cant not found moudle mybolgPath/...</code></p>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><p><code>cant not found moudle mybolgPath/...</code></p>
 <p>说是找不到模块<code>...</code>，这个有点奇怪的报错，让我觉得莫名其妙，于是在网上各种搜索</p>
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>看到有大佬说<strong>如果文件配置和模块都没问题，但提示找不到模块，多半是node版本不适合当前项目导致的</strong></p>
 <p>想了想，我最近在鼓捣自己的博客时，改动最多的就是配置文件，模块什么的就没动过，最大的改动就是为了测试一个功能安装了最新版的node。</p>
 <h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>最开始我用的是node v11.14.0,之后更新到了 v14.15.0<br>想要快捷简单的管理node版本，可以使用n一个node的版本控制插件</p>
 <p>安装n<br><code>npm install -g n</code></p>
 <p>查看node版本<br><code>node -v</code><br><code>14.15.0</code></p>
-<p>下载11.14.0<br><code>n v11.14.0</code><a href="%E5%8F%AF%E8%83%BD%E4%BC%9A%E6%8F%90%E7%A4%BA%60PATH=$PATH%60%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%94%99%E8%AF%AF%EF%BC%8C%E6%98%AF%E5%9B%A0%E4%B8%BA%E7%B3%BB%E7%BB%9F%E8%BF%98%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B9%8B%E5%89%8D%E7%89%88%E6%9C%AC%E7%9A%84node,%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%8B%60PATH=$PATH%60%E5%8D%B3%E5%8F%AF">^1</a></p>
+<p>下载11.14.0<br><code>n v11.14.0</code><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="可能会提示`PATH=$PATH`之类的错误，是因为系统还在使用之前版本的node,运行一下`PATH=$PATH`即可">[1]</span></a></sup></p>
 <p>完成后查看node版本<br><code>node -v</code><br><code>11.14.0</code></p>
 <p>之后再次运行博客，就没出现找不到模块的错误了，解决。</p>
-
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">可能会提示<code>PATH=$PATH</code>之类的错误，是因为系统还在使用之前版本的node,运行一下<code>PATH=$PATH</code>即可<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
         </div>
 
         

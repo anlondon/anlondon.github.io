@@ -195,9 +195,9 @@
         
 
         <div class="article-content markdown-body">
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>最近在做公司的一个抽奖活动项目，由于是手机端，所以没有设置cookie的保存时间，即默认cookie为临时会话，当用户关闭浏览器或者关闭网页cookie就会过期。</p>
-<p>但是在测试时，明明没有关闭网页和浏览器，刚刚登陆过一会就又跳转到登陆页面，查看浏览器控制台，显示如下信息。<br><code>ci-session</code> 为后台设置的<code>cookie_name</code></p>
-<p><code>缺少 「secure」 cookie 已拒绝 “ci-session”</code><br><img src="http://anlondon.cn:4000/2021/01/29/cookie-%E5%B7%B2%E6%8B%92%E7%BB%9D-%E2%80%9Cci-session/pasted-1.png" alt="来自anlondon博客"></p>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><img src="/2021/03/07/%E5%B0%91-%E3%80%8Csecure%E3%80%8D-cookie-%E5%B7%B2%E6%8B%92%E7%BB%9D-%E2%80%9Cci-session/pasted-0.png" alt="一座浮岛"><br><code>缺少 「secure」属性， cookie 已拒绝 “ci-session”</code></p>
+<p>最近在做公司的一个抽奖活动项目，由于是手机端，所以没有设置cookie的保存时间，即默认cookie为临时会话，当用户关闭浏览器或者关闭网页cookie就会过期。</p>
+<p>但是在测试时，明明没有关闭网页和浏览器，刚刚登陆过一会就又跳转到登陆页面，查看浏览器控制台，显示上面的信息。<br><code>ci-session</code> 为后台设置的<code>cookie_name</code></p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在 cookie 设置中，将<code>$config[&#39;cookie_secure&#39;]</code>的值改为<code>TRUE</code>，问题解决</p>
 <hr>
 <p><strong>相关资料</strong>：</p>

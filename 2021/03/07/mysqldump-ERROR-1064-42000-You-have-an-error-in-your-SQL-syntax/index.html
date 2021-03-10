@@ -202,6 +202,9 @@
 <p>在dos下备份数据库的时候提示上面的错误信息</p>
 <p>通过查资料知道，不需要登录mysql,只需要在命令行下切换到mysql\bin目录，使用备份命令mysqldump即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d:\phpStudy\MySQL\bin&gt;mysqldump -uroot -proot testphp &gt;d:\testphp.sql</span><br><span class="line">   </span><br><span class="line">d:\phpStudy\MySQL\bin&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>【anlondon:】</strong><br>还有一种情况是，备份时用的powershell，还原时用的cmd,也会出现这种情况情况，原因好像是因为两者的输出编码不同导致的，这时统一命令行软件即可</p>
+
         </div>
 
         

@@ -9,7 +9,7 @@
     
     <title>
         
-            Categories |
+            windows2008 R2忘记密码 |
         
         一座浮岛
     </title>
@@ -62,7 +62,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/categories"
                             >
                                 归档
@@ -112,7 +112,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/categories">归档</a>
                 </li>
             
@@ -142,13 +142,108 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="category-list-container">
-        <div class="category-list-content">
-            <ul class="all-category-list"><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/Apache/">Apache</a><span class="all-category-list-count">3</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/FTP/">FTP</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/Git/">Git</a><span class="all-category-list-count">5</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/HTML/">HTML</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/Hexo/">Hexo</a><span class="all-category-list-count">4</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/IIS/">IIS</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/MarkDown/">MarkDown</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/MySql/">MySql</a><span class="all-category-list-count">6</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/Nginx/">Nginx</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/PHP/">PHP</a><span class="all-category-list-count">2</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/Python/">Python</a><span class="all-category-list-count">2</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/Vim/">Vim</a><span class="all-category-list-count">2</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/cookie/">cookie</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/node/">node</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/pm2/">pm2</a><span class="all-category-list-count">1</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="all-category-list-count">5</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="all-category-list-count">1</span></li></ul>
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">windows2008 R2忘记密码</span>
         </div>
-        <div class="category-comments">
-            
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar_my.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">anlodnon</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-03-19 14:25:58
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>服务器：Windows2008 R2<br>远程时一直提示密码错误，于是手动修改远程密码</p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><h5 id="阿里等第三方虚拟主机"><a href="#阿里等第三方虚拟主机" class="headerlink" title="阿里等第三方虚拟主机"></a>阿里等第三方虚拟主机</h5><ol>
+<li>登录云服务器管理控制台。</li>
+<li>单击左侧导航栏中的<strong>实例</strong>，在<strong>实例列表</strong>找到您需要远程登录的目标实例，单击远程连接，在弹出的页面中选择<strong>发送远程命令（云助手）</strong>的方式。<br> <img src="/2021/03/19/windows2008-R2%E5%BF%98%E8%AE%B0%E5%AF%86/pasted-0.png" alt="一座浮岛"></li>
+<li>输入重置密码命令，然后单击执行按钮<br> <code>net user administrator 123456@p</code><br> 上述命令为重置adminitrator用户密码为123456@p</li>
+<li>之后即可使用重置的账号和密码进行远程连接</li>
+</ol>
+<h5 id="本地"><a href="#本地" class="headerlink" title="本地"></a>本地</h5><ol>
+<li><code>win</code>+<code>X</code>唤出命令行窗口</li>
+<li><code>net user administrator 123456@p</code> 重置密码</li>
+</ol>
+<hr>
+<p><strong>参考资料</strong>：</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/60947.html" >阿里解答|重置Windows服务器的远程连接密码<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/6079ad0e97f48828ff86dbe8.html" >百度经验|Server2008R2系统忘记密码时进行密码重置<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+
         </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/03/19/%E5%88%A9%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E8%BF%9B%E8%A1%8Cftp%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">利用cmd命令进行ftp文件上传和下载</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/03/17/%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95-%E4%B8%BA%E7%A9%BA%E9%87%8D%E5%A4%8D-%E6%8A%A5%E9%94%99/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数据库索引 为空重复 报错</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
 
@@ -195,6 +290,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">

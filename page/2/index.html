@@ -147,6 +147,70 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2021/06/09/tp5-%E4%BA%8B%E5%8A%A1%E5%86%85%E5%A4%9A%E7%A7%8Dsql%E6%96%B9%E6%B3%95%E9%94%99%E8%AF%AF/">
+                        tp5 事务内多种sql方法错误
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        问题在修改项目时，遇到一个新旧交替的地方，事务内既有sql语句，又有tp的模型对象,
+导致程序虽然能正常运行，sql语句也都是正常的，但是因为修改sql的方式不同，从而使模型修改的数据始终会被回滚
+12345678910111213141516171...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Jun 09 2021 19:37:00 GMT+0800">2021-06-09</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/06/09/tp5-%E4%BA%8B%E5%8A%A1%E5%86%85%E5%A4%9A%E7%A7%8Dsql%E6%96%B9%E6%B3%95%E9%94%99%E8%AF%AF/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/06/09/%E4%BD%BF%E7%94%A8tp-queue-later%E9%81%87%E5%88%B0%E7%9A%84%E5%A5%87%E5%A6%99bug/">
+                        使用tp/queue::later时的奇妙问题
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        配置
+php 7.19
+thinkphp 5
+fastadmin 2.0
+topthink/think-queue 1.1.6
+
+问题在弄项目时，遇到一个神奇的问题，明明sql语句没有问题，调试运行都没有问题，但是在程序完整执行后，数据库并没有变化。...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Jun 09 2021 13:59:00 GMT+0800">2021-06-09</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/06/09/%E4%BD%BF%E7%94%A8tp-queue-later%E9%81%87%E5%88%B0%E7%9A%84%E5%A5%87%E5%A6%99bug/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2021/06/03/stadmin-Summernote-%E4%B8%8D%E5%8A%A0%E8%BD%BD%E6%98%BE%E7%A4%BA/">
                         fastadmin  Summernote 不加载显示
                     </a>
@@ -396,69 +460,6 @@ IIS7
     </div>
 
     <a href="/2021/04/05/php-xdebug%E9%85%8D%E7%BD%AE/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/04/05/php%E7%9A%84ts-nts/">
-                        php的ts,nts
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        
-来源：php的ts,tns_兔子的博客-CSDN博客
-
-1. 简介ts(Thread-Safety)即线程安全，多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他
-线程不能进行访问直到该线程读取完，其他线程才可使用。不会出...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Apr 05 2021 23:17:06 GMT+0800">2021-04-05</span></span>
-        
-        
-    </div>
-
-    <a href="/2021/04/05/php%E7%9A%84ts-nts/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/04/05/npm-%E6%89%93%E5%8C%85%E9%A1%B9%E7%9B%AE/">
-                        npm 打包项目
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        
-来源: vue使用npm run build命令打包 - 西瓜君~ - 博客园
-
-当我们使用vue-cli脚手架完成一个项目的时候，下一步肯定会想要怎么把这个项目放到互联网上或者本地直接打开呢，我们在本地调试的时候只要命令行执行npm run de...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Apr 05 2021 23:10:00 GMT+0800">2021-04-05</span></span>
-        
-        
-    </div>
-
-    <a href="/2021/04/05/npm-%E6%89%93%E5%8C%85%E9%A1%B9%E7%9B%AE/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>

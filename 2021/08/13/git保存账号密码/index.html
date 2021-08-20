@@ -217,12 +217,13 @@
 <li><code>Global</code> 为配置的全局 (<code>git</code>无单仓库配置时，全局配置生效)</li>
 <li><code>Local</code> 为仓库级别 (设置过单仓库配置时，优先使用单仓库配置)</li>
 </ul>
+<p><strong>查看已配置的信息</strong><br><code>git config --global -l</code><br><code>git config --local -l</code></p>
 <p><strong>全局配置</strong><br><code>git config --global user.name &quot;anlondon&quot;</code><br><code>git config --global user.email &quot;anlondon@foxmail.com&quot;</code><br><code>git config --global user.password &quot;xxxx&quot;</code></p>
 <p><strong>单仓库配置</strong><br><code>git config --local user.name &quot;anlondon&quot;</code><br><code>git config --local user.email &quot;anlondon@foxmail.com&quot;</code><br><code>git config --local user.password &quot;xxxx&quot;</code></p>
 <h3 id="密码保存机制"><a href="#密码保存机制" class="headerlink" title="密码保存机制"></a>密码保存机制</h3><p><code>git</code>默认不保存输入的账号和密码，每次提交拉取都会要求输入账号密码</p>
-<p>缓存账号与密码，默认15分钟<br><code>git config –global credential.helper cache</code></p>
-<p>修改缓存时间为1小时<br><code>git config credential.helper cache –timeout=3600</code></p>
-<p>永久保存账号密码<br><code>git config –global credential.helper store</code></p>
+<p>缓存账号与密码，默认15分钟<br><code>git config --global credential.helper cache</code></p>
+<p>修改缓存时间为1小时<br><code>git config credential.helper cache -timeout=3600</code></p>
+<p>永久保存账号密码<br><code>git config --global credential.helper store</code></p>
 <p>–<br>参考资料</p>
 <ul>
 <li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/lyly4413/article/details/80691751" >git永久保存账号密码，免去git重复输入账号密码操作<i class="fas fa-external-link-alt"></i></a></li>

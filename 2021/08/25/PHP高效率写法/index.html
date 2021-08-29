@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="技术,分享,生活">
+    <meta name="description" content="这里是anlondon,欢迎留言交流">
+    <meta name="author" content="anlondon">
+    
+    <title>
+        
+            PHP高效率写法 |
+        
+        一座浮岛
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_my.png">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar_my.svg","favicon":"/images/logo_my.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"做自己的星辰，点缀这世界。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                一座浮岛
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">PHP高效率写法</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar_my.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">anlondon</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-08-25 14:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/PHP/">PHP</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/PHP/">PHP</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p>转自： <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/glory-jzx/archive/2012/08/21/2649712.html" >PHP高效率写法（详解原因）<i class="fas fa-external-link-alt"></i></a><br>作者： <a class="link"   target="_blank" rel="noopener" href="https://home.cnblogs.com/u/glory-jzx/" >﹏Sakura<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h6 id="1-尽量静态化："><a href="#1-尽量静态化：" class="headerlink" title="1. 尽量静态化："></a>1. 尽量静态化：</h6><p>如果一个方法能被静态，那就声明它为静态的，速度可提高1/4，甚至我测试的时候，这个提高了近三倍。<br>当然了，这个测试方法需要在十万级以上次执行，效果才明显。<br>其实静态方法和非静态方法的效率主要区别在内存：静态方法在程序开始时生成内存,实例方法在程序运行中生成内存，所以静态方法可以直接调用,实例方法要先成生实例,通过实例调用方法，静态速度很快，但是多了会占内存。<br>任何语言都是对内存和磁盘的操作,至于是否面向对象,只是软件层的问题,底层都是一样的,只是实现方法不同。静态内存是连续的,因为是在程序开始时就生成了,而实例申请的是离散的空间,所以当然没有静态方法快。<br>静态方法始终调用同一块内存，其缺点就是不能自动进行销毁，而是实例化可以销毁。</p>
+<h6 id="2-echo的效率高于print-因为echo没有返回值，print返回一个整型"><a href="#2-echo的效率高于print-因为echo没有返回值，print返回一个整型" class="headerlink" title="2.echo的效率高于print,因为echo没有返回值，print返回一个整型;"></a>2.echo的效率高于print,因为echo没有返回值，print返回一个整型;</h6><p>测试：<br>Echo<br>0.000929 - 0.001255 s (平均 0.001092 seconds)<br>Print<br>0.000980 - 0.001396 seconds (平均 0.001188 seconds)<br>相差8%左右，总体上echo是比较快的。<br>注意，echo大字符串的时候，如果没有做调整就严重影响性能。使用打开apached的mod_deflate进行压缩或者打开ob_start先将内容放进缓冲区。</p>
+<h6 id="3-在循环之前设置循环的最大次数，而非在在循环中"><a href="#3-在循环之前设置循环的最大次数，而非在在循环中" class="headerlink" title="3.在循环之前设置循环的最大次数，而非在在循环中;"></a>3.在循环之前设置循环的最大次数，而非在在循环中;</h6><p>傻子都明白的道理。</p>
+<h6 id="4-销毁变量去释放内存，特别是大的数组"><a href="#4-销毁变量去释放内存，特别是大的数组" class="headerlink" title="4.销毁变量去释放内存，特别是大的数组;"></a>4.销毁变量去释放内存，特别是大的数组;</h6><p>数组和对象在php特别占内存的，这个由于php的底层的zend引擎引起的，<br>一般来说，PHP数组的内存利用率只有 1/10, 也就是说，一个在C语言里面100M 内存的数组，在PHP里面就要1G。<br>特别是在PHP作为后台服务器的系统中，经常会出现内存耗费太大的问题。</p>
+<h6 id="5-避免使用像-get-set-autoload等魔术方法"><a href="#5-避免使用像-get-set-autoload等魔术方法" class="headerlink" title="5.避免使用像__get, __set, __autoload等魔术方法;"></a>5.避免使用像__get, __set, __autoload等魔术方法;</h6><p>对于__开头的函数就命名为魔术函数，此类函数都在特定的条件下初访的。总得来说，有下面几个魔术函数<br>__construct()，__destruct()，__get()，__set()，__unset()，__call()，__callStatic()，__sleep()，__wakeup()，__toString()，__set_state()，__clone()，__autoload()</p>
+<p>其实，如果__autoload不能高效的将类名与实际的磁盘文件(注意，这里指实际的磁盘文件，而不仅仅是文件名)对应起来，系统将不得不做大量的文件是 否存在(需要在每个include path中包含的路径中去寻找)的判断，而判断文件是否存在需要做磁盘I/O操作，众所周知磁盘I/O操作的效率很低，因此这才是使得autoload机制效率降低的原因。</p>
+<p>因此，我们在系统设计时，需要定义一套清晰的将类名与实际磁盘文件映射的机制。这个规则越简单越明确，autoload机制的效率就越高。<br>结论：autoload机制并不是天然的效率低下，只有滥用autoload，设计不好的自动装载函数才会导致其效率的降低.</p>
+<p>所以说尽量避免使用__autoload魔术方法，有待商榷。</p>
+<h6 id="6-requiere-once-比较耗资源"><a href="#6-requiere-once-比较耗资源" class="headerlink" title="6.requiere_once()比较耗资源;"></a>6.requiere_once()比较耗资源;</h6><p>这是因为requiere_once需要判断该文件是否被引用过),所以能不用尽量不用。常用require/include方法避免。</p>
+<h6 id="7-在includes和requires中使用绝对路径。"><a href="#7-在includes和requires中使用绝对路径。" class="headerlink" title="7.在includes和requires中使用绝对路径。"></a>7.在includes和requires中使用绝对路径。</h6><p>如果包含相对路径，PHP会在include_path里面遍历查找文件。<br>用绝对路径就会避免此类问题，因此解析操作系统路径所需的时间会更少。</p>
+<h6 id="8-如果你需要得到脚本执行时的时间，-SERVER-‘REQUSET-TIME’-优于time"><a href="#8-如果你需要得到脚本执行时的时间，-SERVER-‘REQUSET-TIME’-优于time" class="headerlink" title="8.如果你需要得到脚本执行时的时间，$_SERVER[‘REQUSET_TIME’]优于time();"></a>8.如果你需要得到脚本执行时的时间，$_SERVER[‘REQUSET_TIME’]优于time();</h6><p>可以想象。一个是现成就可以直接用，一个还需要函数得出的结果。</p>
+<h6 id="9-能用PHP内部字符串操作函数的情况下，尽量用他们，不要用正则表达式；-因为其效率高于正则"><a href="#9-能用PHP内部字符串操作函数的情况下，尽量用他们，不要用正则表达式；-因为其效率高于正则" class="headerlink" title="9.能用PHP内部字符串操作函数的情况下，尽量用他们，不要用正则表达式； 因为其效率高于正则;"></a>9.能用PHP内部字符串操作函数的情况下，尽量用他们，不要用正则表达式； 因为其效率高于正则;</h6><p>没得说，正则最耗性能。<br>有没有你漏掉的好用的函数？例如：strpbrk()strncasecmp()strpos()/strrpos()/stripos()/strripos()加速 strtr如果需要转换的全是单个字符的时候，<br>用字符串而不是数组来做 strtr：<br><?php
+$addr = strtr($addr, "abcd", "efgh"); // good
+$addr = strtr($addr, array('a' => 'e', )); // bad
+?><br>效率提升：10 倍。</p>
+<h6 id="10-str-replace字符替换比正则替换preg-replace快，但strtr比str-replace又快1-4"><a href="#10-str-replace字符替换比正则替换preg-replace快，但strtr比str-replace又快1-4" class="headerlink" title="10.str_replace字符替换比正则替换preg_replace快，但strtr比str_replace又快1/4;"></a>10.str_replace字符替换比正则替换preg_replace快，但strtr比str_replace又快1/4;</h6><p>另外不要做无谓的替换即使没有替换，str_replace 也会为其参数分配内存。很慢！解决办法：<br>用 strpos 先查找(非常快)，看是否需要替换，如果需要，再替换效率：- 如果需要替换：效率几乎相等，差别在 0.1% 左右。<br>如果不需要替换：用 strpos 快 200%。</p>
+<h6 id="11-参数为字符串"><a href="#11-参数为字符串" class="headerlink" title="11.参数为字符串"></a>11.参数为字符串</h6><p>如果一个函数既能接受数组又能接受简单字符做为参数，例如字符替换函数，并且参数列表不是太长，可以考虑额外写一段替换代码，使得每次传递参数都是一 个字符，而不是接受数组做为查找和替换参数。大事化小，1+1&gt;2;</p>
+<h6 id="12-最好不用-，用-掩盖错误会降低脚本运行速度"><a href="#12-最好不用-，用-掩盖错误会降低脚本运行速度" class="headerlink" title="12.最好不用@，用@掩盖错误会降低脚本运行速度;"></a>12.最好不用@，用@掩盖错误会降低脚本运行速度;</h6><p>用@实际上后台有很多操作。用@比起不用@，效率差距：3 倍。特别不要在循环中使用@，在 5 次循环的测试中，即使是先用 error_reporting(0) 关掉错误，在循环完成后再打开，都比用@快。</p>
+<h6 id="13-row-‘id’-比-row-id-速度快7倍"><a href="#13-row-‘id’-比-row-id-速度快7倍" class="headerlink" title="13.$row[‘id’]比$row[id]速度快7倍"></a>13.$row[‘id’]比$row[id]速度快7倍</h6><p>建议养成数组键加引号的习惯;</p>
+<h6 id="14-在循环里别用函数"><a href="#14-在循环里别用函数" class="headerlink" title="14.在循环里别用函数"></a>14.在循环里别用函数</h6><p>例如For($x=0; $x &lt; count($array); $x), count()函数在外面先计算;原因你懂的。</p>
+<h6 id="16-在类的方法里建立局部变量速度最快，几乎和在方法里调用局部变量一样快"><a href="#16-在类的方法里建立局部变量速度最快，几乎和在方法里调用局部变量一样快" class="headerlink" title="16.在类的方法里建立局部变量速度最快，几乎和在方法里调用局部变量一样快;"></a>16.在类的方法里建立局部变量速度最快，几乎和在方法里调用局部变量一样快;</h6><h6 id="17-建立一个全局变量要比局部变量要慢2倍"><a href="#17-建立一个全局变量要比局部变量要慢2倍" class="headerlink" title="17.建立一个全局变量要比局部变量要慢2倍;"></a>17.建立一个全局变量要比局部变量要慢2倍;</h6><p>由于局部变量是存在栈中的，当一个函数占用的栈空间不是很大的时候，这部分内存很有可能全部命中cache，这时候CPU访问的效率是很高的。<br>相反，如果一个函数里既使用了全局变量又使用了局部变量，那么当这两段地址相差较大时，cpu cache需要来回切换，那么效率会下降。<br>(我理解啊)</p>
+<h6 id="18-建立一个对象属性-类里面的变量-例如-this-gt-prop-比局部变量要慢3倍"><a href="#18-建立一个对象属性-类里面的变量-例如-this-gt-prop-比局部变量要慢3倍" class="headerlink" title="18.建立一个对象属性(类里面的变量)例如($this-&gt;prop++)比局部变量要慢3倍;"></a>18.建立一个对象属性(类里面的变量)例如($this-&gt;prop++)比局部变量要慢3倍;</h6><h6 id="19-建立一个未声明的局部变量要比一个已经定义过的局部变量慢9-10倍"><a href="#19-建立一个未声明的局部变量要比一个已经定义过的局部变量慢9-10倍" class="headerlink" title="19.建立一个未声明的局部变量要比一个已经定义过的局部变量慢9-10倍"></a>19.建立一个未声明的局部变量要比一个已经定义过的局部变量慢9-10倍</h6><h6 id="20-声明一个未被任何一个函数使用过的全局变量也会使性能降低-和声明相同数量的局部变量一样-。"><a href="#20-声明一个未被任何一个函数使用过的全局变量也会使性能降低-和声明相同数量的局部变量一样-。" class="headerlink" title="20.声明一个未被任何一个函数使用过的全局变量也会使性能降低(和声明相同数量的局部变量一样)。"></a>20.声明一个未被任何一个函数使用过的全局变量也会使性能降低(和声明相同数量的局部变量一样)。</h6><p>PHP可能去检查这个全局变量是否存在;</p>
+<h6 id="21-方法的性能和在一个类里面定义的方法的数目没有关系"><a href="#21-方法的性能和在一个类里面定义的方法的数目没有关系" class="headerlink" title="21.方法的性能和在一个类里面定义的方法的数目没有关系"></a>21.方法的性能和在一个类里面定义的方法的数目没有关系</h6><p>因为我添加10个或多个方法到测试的类里面(这些方法在测试方法的前后)后性能没什么差异;</p>
+<h6 id="22-在子类里方法的性能优于在基类中"><a href="#22-在子类里方法的性能优于在基类中" class="headerlink" title="22.在子类里方法的性能优于在基类中;"></a>22.在子类里方法的性能优于在基类中;</h6><h6 id="23-只调用一个参数并且函数体为空的函数运行花费的时间等于7-8次-localvar-运算，而一个类似的方法-类里的函数-运行等于大约15次-localvar-运算"><a href="#23-只调用一个参数并且函数体为空的函数运行花费的时间等于7-8次-localvar-运算，而一个类似的方法-类里的函数-运行等于大约15次-localvar-运算" class="headerlink" title="23.只调用一个参数并且函数体为空的函数运行花费的时间等于7-8次$localvar++运算，而一个类似的方法(类里的函数)运行等于大约15次$localvar++运算;"></a>23.只调用一个参数并且函数体为空的函数运行花费的时间等于7-8次$localvar++运算，而一个类似的方法(类里的函数)运行等于大约15次$localvar++运算;</h6><h6 id="24-用单引号代替双引号来包含字符串，这样做会更快一些。"><a href="#24-用单引号代替双引号来包含字符串，这样做会更快一些。" class="headerlink" title="24 用单引号代替双引号来包含字符串，这样做会更快一些。"></a>24 用单引号代替双引号来包含字符串，这样做会更快一些。</h6><p>因为PHP会在双引号包围的字符串中搜寻变量，单引号则不会。</p>
+<p>PHP 引擎允许使用单引号和双引号来封装字符串变量，但是这个是有很大的差别的！使用双引号的字符串告诉 PHP 引擎首先去读取字符串内容，查找其中的变 量，并改为变量对应的值。一般来说字符串是没有变量的，所以使用双引号会导致性能不佳。最好是使用字<br>符串连接而不是双引号字符串。<br>BAD:<br>$output = “This is a plain string”;<br>GOOD:<br>$output = ‘This is a plain string’;<br>BAD:<br>$type = “mixed”;<br>$output = “This is a $type string”;<br>GOOD:<br>$type = ‘mixed’;<br>$output = ‘This is a ‘ . $type .’ string’;</p>
+<h6 id="25-当echo字符串时用逗号代替点连接符更快些。"><a href="#25-当echo字符串时用逗号代替点连接符更快些。" class="headerlink" title="25.当echo字符串时用逗号代替点连接符更快些。"></a>25.当echo字符串时用逗号代替点连接符更快些。</h6><p>echo一种可以把多个字符串当作参数的“函数”（译注：PHP手册中说echo是语言结构，不是真正的函数，故把函数加上了双引号）。</p>
+<p>例如echo $str1,$str2。</p>
+<h6 id="26-Apache解析一个PHP脚本的时间要比解析一个静态HTML页面慢2至10倍。"><a href="#26-Apache解析一个PHP脚本的时间要比解析一个静态HTML页面慢2至10倍。" class="headerlink" title="26.Apache解析一个PHP脚本的时间要比解析一个静态HTML页面慢2至10倍。"></a>26.Apache解析一个PHP脚本的时间要比解析一个静态HTML页面慢2至10倍。</h6><p>尽量多用静态HTML页面，少用脚本。</p>
+<h6 id="28-尽量使用缓存，建议用memcached。"><a href="#28-尽量使用缓存，建议用memcached。" class="headerlink" title="28.尽量使用缓存，建议用memcached。"></a>28.尽量使用缓存，建议用memcached。</h6><p>高性能的分布式内存对象缓存系统，提高动态网络应用程序性能，减轻数据库的负担;</p>
+<p>也对运算码 (OP code)的缓存很有用，使得脚本不必为每个请求做重新编译。</p>
+<h6 id="29-使用ip2long-和long2ip-函数把IP地址转成整型存放进数据库而非字符型。"><a href="#29-使用ip2long-和long2ip-函数把IP地址转成整型存放进数据库而非字符型。" class="headerlink" title="29.使用ip2long()和long2ip()函数把IP地址转成整型存放进数据库而非字符型。"></a>29.使用ip2long()和long2ip()函数把IP地址转成整型存放进数据库而非字符型。</h6><p>这几乎能降低1/4的存储空间。同时可以很容易对地址进行排序和快速查找;</p>
+<h6 id="30-使用checkdnsrr-通过域名存在性来确认部分email地址的有效性"><a href="#30-使用checkdnsrr-通过域名存在性来确认部分email地址的有效性" class="headerlink" title="30.使用checkdnsrr()通过域名存在性来确认部分email地址的有效性"></a>30.使用checkdnsrr()通过域名存在性来确认部分email地址的有效性</h6><p>这个内置函数能保证每一个的域名对应一个IP地址;</p>
+<h6 id="31-使用mysql-的改良函数mysqli"><a href="#31-使用mysql-的改良函数mysqli" class="headerlink" title="31.使用mysql_的改良函数mysqli_;"></a>31.使用mysql_<em>的改良函数mysqli_</em>;</h6><h6 id="32-试着喜欢使用三元运算符-："><a href="#32-试着喜欢使用三元运算符-：" class="headerlink" title="32.试着喜欢使用三元运算符(?：);"></a>32.试着喜欢使用三元运算符(?：);</h6><h6 id="33-是否需要PEAR"><a href="#33-是否需要PEAR" class="headerlink" title="33.是否需要PEAR"></a>33.是否需要PEAR</h6><p>在你想在彻底重做你的项目前，看看PEAR有没有你需要的。PEAR是个巨大的资源库，很多php开发者都知道;</p>
+<h6 id="35-使用error-reporting-0-函数来预防潜在的敏感信息显示给用户。"><a href="#35-使用error-reporting-0-函数来预防潜在的敏感信息显示给用户。" class="headerlink" title="35.使用error_reporting(0)函数来预防潜在的敏感信息显示给用户。"></a>35.使用error_reporting(0)函数来预防潜在的敏感信息显示给用户。</h6><p>理想的错误报告应该被完全禁用在php.ini文件里。可是如果你在用一个共享的虚拟主机，php.ini你不能修改，那么你最好添加error_reporting(0)函数，放在每个脚本文件的第一行(或用</p>
+<p>require_once()来加载)这能有效的保护敏感的SQL查询和路径在出错时不被显示;</p>
+<h6 id="36-使用-gzcompress-和gzuncompress-对容量大的字符串进行压缩-解压-在存进-取出-数据库时。"><a href="#36-使用-gzcompress-和gzuncompress-对容量大的字符串进行压缩-解压-在存进-取出-数据库时。" class="headerlink" title="36.使用 gzcompress() 和gzuncompress()对容量大的字符串进行压缩(解压)在存进(取出)数据库时。"></a>36.使用 gzcompress() 和gzuncompress()对容量大的字符串进行压缩(解压)在存进(取出)数据库时。</h6><p>这种内置的函数使用gzip算法能压缩到90%;</p>
+<h6 id="37-通过参数变量地址得引用来使一个函数有多个返回值。"><a href="#37-通过参数变量地址得引用来使一个函数有多个返回值。" class="headerlink" title="37.通过参数变量地址得引用来使一个函数有多个返回值。"></a>37.通过参数变量地址得引用来使一个函数有多个返回值。</h6><p>你可以在变量前加个“&amp;”来表示按地址传递而非按值传递;</p>
+<h6 id="38-完全理解魔术引用和SQL注入的危险。"><a href="#38-完全理解魔术引用和SQL注入的危险。" class="headerlink" title="38. 完全理解魔术引用和SQL注入的危险。"></a>38. 完全理解魔术引用和SQL注入的危险。</h6><p>Fully understand “magic quotes” and the dangers of SQL injection. I’m hoping that most developers reading this are already familiar with SQL injection. However, I list it here because it’s absolutely critical to understand. If you’ve never heard the term before, spend the entire rest of the day googling and reading.</p>
+<h6 id="39-某些地方使用isset代替strlen"><a href="#39-某些地方使用isset代替strlen" class="headerlink" title="39.某些地方使用isset代替strlen"></a>39.某些地方使用isset代替strlen</h6><p>当操作字符串并需要检验其长度是否满足某种要求时，你想当然地会使用strlen()函数。此函数执行起来相当快，因为它不做任何计算，只返回在zval 结构（C的内置数据结构，用于存储PHP变量）中存储的已知字符串长度。但是，由于strlen()是函数，多多少少会有些慢，因为函数调用会经过诸多步骤，如字母小写化（译注：指函数名小写化，PHP不区分函数名大小写）、哈希查找，会跟随被调用的函数一起执行。在某些情况下，你可以使用isset() 技巧加速执行你的代码。</p>
+<p>（举例如下）<br>if (strlen($foo) &lt; 5) { echo “Foo is too short”$$ }<br>（与下面的技巧做比较）<br>if (!isset($foo{5})) { echo “Foo is too short”$$ }<br>调用isset()恰巧比strlen()快，因为与后者不同的是，isset()作为一种语言结构，意味着它的执行不需要函数查找和字母小写化。也就是说，实际上在检验字符串长度的顶层代码中你没有花太多开销。</p>
+<h6 id="40-使用-i递增"><a href="#40-使用-i递增" class="headerlink" title="40.使用++$i递增"></a>40.使用++$i递增</h6><p>When incrementing or decrementing the value of the variable $i++ happens to be a tad slower then ++$i. This is something PHP specific and does not apply to other languages, so don’t go modifying your C or Java code thinking it’ll suddenly become faster, it won’t. ++$i happens to be faster in PHP because instead of 4 opcodes used for $i++ you only need 3. Post incrementation actually causes in the creation of a temporary var that is then incremented. While preincrementation increases the original value directly. This is one of the optimization that opcode optimized like Zend’s PHP optimizer. It is a still a good idea to keep in mind since not all opcode optimizers perform this optimization and there are plenty of ISPs and servers running without an opcode optimizer.</p>
+<p>当执行变量$i的递增或递减时，$i++会比++$i慢一些。这种差异是PHP特有的，并不适用于其他语言，所以请不要修改你的C或Java代码并指望它们能立即变快，没用的。++$i更快是因为它只需要3条指令(opcodes)，$i++则需要4条指令。后置递增实际上会产生一个临时变量，这个临时变量随后被递增。而前置递增直接在原值上递增。这是最优化处理的一种，正如Zend的PHP优化器所作的那样。牢记这个优化处理不失为一个好主意，因为并不是所有的指令优化器都会做同样的优化处理，并且存在大量没有装配指令优化器的互联网服务<br>提供商（ISPs）和服务器。</p>
+<h6 id="40-不要随便就复制变量"><a href="#40-不要随便就复制变量" class="headerlink" title="40. 不要随便就复制变量"></a>40. 不要随便就复制变量</h6><p>有时候为了使 PHP 代码更加整洁，一些 PHP 新手（包括我）会把预定义好的变量复制到一个名字更简短的变量中，其实这样做的结果是增加了一倍的内存消耗，只会使程序更加慢。试想一下，在下面的例子中，如果用户恶意插入 512KB 字节的文字到文本输入框中，这样就会导致 1MB 的内存被消耗！<br>BAD:<br>$description = $_POST[‘description’];<br>echo $description;<br>GOOD:<br>echo $_POST[‘description’];</p>
+<h6 id="41-使用选择分支语句"><a href="#41-使用选择分支语句" class="headerlink" title="41 使用选择分支语句"></a>41 使用选择分支语句</h6><p>switch case好于使用多个if，else if语句,并且代码更加容易阅读和维护。</p>
+<h6 id="42-在可以用file-get-contents替代file、fopen、feof、fgets"><a href="#42-在可以用file-get-contents替代file、fopen、feof、fgets" class="headerlink" title="42.在可以用file_get_contents替代file、fopen、feof、fgets"></a>42.在可以用file_get_contents替代file、fopen、feof、fgets</h6><p>在可以用file_get_contents替代file、fopen、feof、fgets等系列方法的情况下，尽量用file_get_contents，因为他的效率高得多！但是要注意file_get_contents在打开一个URL文件时候的PHP版本问题；</p>
+<h6 id="43-尽量的少进行文件操作，虽然PHP的文件操作效率也不低的；"><a href="#43-尽量的少进行文件操作，虽然PHP的文件操作效率也不低的；" class="headerlink" title="43.尽量的少进行文件操作，虽然PHP的文件操作效率也不低的；"></a>43.尽量的少进行文件操作，虽然PHP的文件操作效率也不低的；</h6><h6 id="44-优化Select-SQL语句，在可能的情况下尽量少的进行Insert、Update操作-在update上，我被恶批过-；"><a href="#44-优化Select-SQL语句，在可能的情况下尽量少的进行Insert、Update操作-在update上，我被恶批过-；" class="headerlink" title="44.优化Select SQL语句，在可能的情况下尽量少的进行Insert、Update操作(在update上，我被恶批过)；"></a>44.优化Select SQL语句，在可能的情况下尽量少的进行Insert、Update操作(在update上，我被恶批过)；</h6><h6 id="45-尽可能的使用PHP内部函数"><a href="#45-尽可能的使用PHP内部函数" class="headerlink" title="45.尽可能的使用PHP内部函数"></a>45.尽可能的使用PHP内部函数</h6><h6 id="46-循环内部不要声明变量，尤其是大变量：对象"><a href="#46-循环内部不要声明变量，尤其是大变量：对象" class="headerlink" title="46.循环内部不要声明变量，尤其是大变量：对象"></a>46.循环内部不要声明变量，尤其是大变量：对象</h6><p>(这好像不只是PHP里面要注意的问题吧？)；</p>
+<h6 id="47-多维数组尽量不要循环嵌套赋值；"><a href="#47-多维数组尽量不要循环嵌套赋值；" class="headerlink" title="47.多维数组尽量不要循环嵌套赋值；"></a>47.多维数组尽量不要循环嵌套赋值；</h6><h6 id="48-foreach效率更高，尽量用foreach代替while和for循环；"><a href="#48-foreach效率更高，尽量用foreach代替while和for循环；" class="headerlink" title="48.foreach效率更高，尽量用foreach代替while和for循环；"></a>48.foreach效率更高，尽量用foreach代替while和for循环；</h6><h6 id="49-“用i-1代替i-i-1。符合c-c-的习惯，效率还高”；"><a href="#49-“用i-1代替i-i-1。符合c-c-的习惯，效率还高”；" class="headerlink" title="49.“用i+=1代替i=i+1。符合c/c++的习惯，效率还高”；"></a>49.“用i+=1代替i=i+1。符合c/c++的习惯，效率还高”；</h6><h6 id="50-对global变量，应该用完就unset-掉；"><a href="#50-对global变量，应该用完就unset-掉；" class="headerlink" title="50. 对global变量，应该用完就unset()掉；"></a>50. 对global变量，应该用完就unset()掉；</h6><h6 id="51-并不是事必面向对象-OOP-，面向对象往往开销很大，每个方法和对象调用都会消耗很多内存。"><a href="#51-并不是事必面向对象-OOP-，面向对象往往开销很大，每个方法和对象调用都会消耗很多内存。" class="headerlink" title="51. 并不是事必面向对象(OOP)，面向对象往往开销很大，每个方法和对象调用都会消耗很多内存。"></a>51. 并不是事必面向对象(OOP)，面向对象往往开销很大，每个方法和对象调用都会消耗很多内存。</h6><h6 id="52-不要把方法细分得过多，仔细想想你真正打算重用的是哪些代码？"><a href="#52-不要把方法细分得过多，仔细想想你真正打算重用的是哪些代码？" class="headerlink" title="52 不要把方法细分得过多，仔细想想你真正打算重用的是哪些代码？"></a>52 不要把方法细分得过多，仔细想想你真正打算重用的是哪些代码？</h6><h6 id="53-如果在代码中存在大量耗时的函数，你可以考虑用C扩展的方式实现它们。"><a href="#53-如果在代码中存在大量耗时的函数，你可以考虑用C扩展的方式实现它们。" class="headerlink" title="53 如果在代码中存在大量耗时的函数，你可以考虑用C扩展的方式实现它们。"></a>53 如果在代码中存在大量耗时的函数，你可以考虑用C扩展的方式实现它们。</h6><h6 id="54、打开apache的mod-deflate模块，可以提高网页的浏览速度。"><a href="#54、打开apache的mod-deflate模块，可以提高网页的浏览速度。" class="headerlink" title="54、打开apache的mod_deflate模块，可以提高网页的浏览速度。"></a>54、打开apache的mod_deflate模块，可以提高网页的浏览速度。</h6><p>（提到过echo 大变量的问题）</p>
+<h6 id="55、数据库连接当使用完毕时应关掉，不要用长连接。"><a href="#55、数据库连接当使用完毕时应关掉，不要用长连接。" class="headerlink" title="55、数据库连接当使用完毕时应关掉，不要用长连接。"></a>55、数据库连接当使用完毕时应关掉，不要用长连接。</h6><h6 id="56、split比exploade快"><a href="#56、split比exploade快" class="headerlink" title="56、split比exploade快"></a>56、split比exploade快</h6><p>split()<br>0.001813 - 0.002271 seconds (avg 0.002042 seconds)<br>explode()<br>0.001678 - 0.003626 seconds (avg 0.002652 seconds)<br>Split can take regular expressions as delimiters, and runs faster too. ~23% on average.</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/08/24/ueditor%E7%BC%96%E8%BE%91%E5%99%A8%E8%A7%86%E9%A2%91%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ueditor编辑器视频显示问题</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">anlondon</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">蜀ICP备2021002582号</a></div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

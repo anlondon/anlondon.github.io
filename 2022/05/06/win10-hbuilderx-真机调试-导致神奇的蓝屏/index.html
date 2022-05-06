@@ -9,7 +9,7 @@
     
     <title>
         
-            平凡的世界 |
+            win10-hbuilderx 真机调试 导致神奇的蓝屏 |
         
         一座浮岛
     </title>
@@ -155,7 +155,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">平凡的世界</span>
+            <span class="title-hover-animation">win10-hbuilderx 真机调试 导致神奇的蓝屏</span>
         </div>
 
         
@@ -173,7 +173,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-04-11 13:32:00
+        <i class="fas fa-edit"></i>&nbsp;2022-05-06 17:08:00
     </span>
     
         <span class="article-categories article-meta-item">
@@ -181,23 +181,12 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>&nbsp;
+                        <a href="/categories/%E5%BE%AE%E4%BF%A1/">微信</a>&nbsp;
                     </li>
                 
             </ul>
         </span>
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
@@ -216,12 +205,23 @@
         
 
         <div class="article-content markdown-body">
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>《平凡的世界》</p>
-<p>还没看完，但心里五味杂陈。</p>
-<p>想起知乎一个提问：早期那些大牛离开知乎去了哪里？<br>其中一个回答：他们哪里也没去，就在你每天路过人群中擦肩而过，只是没再来知乎了。初不解，觉得世事总会变好，总会有最优解。</p>
-<p>现在才慢慢接受你我皆常人俗人庸人；做好自己已属不易，嘴上叫嚷着改变自己改变社会改变世界，最终也不过为了一口饱饭养家糊口而已；</p>
-<p>事情不常按预想发展，总会变成各种模样。</p>
-<p>平凡的世界，平凡的你我。</p>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近公司电脑总是蓝屏，最高时一天能蓝屏3-4次，每次蓝屏错误提示都不一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;出现过的蓝屏终止代码</span><br><span class="line">IRQL_NOT_LESS_OR_EQUAL</span><br><span class="line">KMODE_EXEPTION_NOT_HANDLED</span><br><span class="line">DRIVER IRQL NOT_LESS_OR_EQUAL</span><br></pre></td></tr></table></figure>
+
+<p>也一一试过论坛中的办法，皆无法解决。</p>
+<p>最终尝试让系统蓝屏时生成<code>.dum</code>文件，再使用windbg来分析<code>.dmp</code>文件；<br>发现是hbuilderx下真机调试插件的一个<code>mdb.exe</code>程序，运行时导致的内存错误蓝屏，卸载掉该插件后恢复正常。<br><img src="/2022/05/06/win10-hbuilderx-%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95-%E5%AF%BC%E8%87%B4%E7%A5%9E%E5%A5%87%E7%9A%84%E8%93%9D/pasted-0.png" alt="一座浮岛"></p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h4 id="1-开启系统崩溃记录"><a href="#1-开启系统崩溃记录" class="headerlink" title="1.开启系统崩溃记录"></a>1.开启系统崩溃记录</h4><p>按照<a class="link"   target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/troubleshoot/windows-client/performance/read-small-memory-dump-file#configure-the-dump-type" >Windows 创建的小内存转储文件<i class="fas fa-external-link-alt"></i></a>中所说，配置开启系统崩溃记录</p>
+<p><img src="/2022/05/06/win10-hbuilderx-%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95-%E5%AF%BC%E8%87%B4%E7%A5%9E%E5%A5%87%E7%9A%84%E8%93%9D/pasted-1.png" alt="一座浮岛"></p>
+<h4 id="2-分析崩溃记录文件"><a href="#2-分析崩溃记录文件" class="headerlink" title="2.分析崩溃记录文件"></a>2.分析崩溃记录文件</h4><p>按照 <a class="link"   target="_blank" rel="noopener" href="https://www.windowscentral.com/how-open-and-analyze-dump-error-files-windows-10" >需要科学上网|How to open and analyze crash dump files on Windows 10<i class="fas fa-external-link-alt"></i></a> 中步骤，分析崩溃文件，并找到导致崩溃的程序，再有针对的处理。</p>
+<p>如我这里就是 hbuilderx3.3.11 中的真机调试插件中的mdb.exe导致的错误<br><img src="/2022/05/06/win10-hbuilderx-%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95-%E5%AF%BC%E8%87%B4%E7%A5%9E%E5%A5%87%E7%9A%84%E8%93%9D/pasted-0.png" alt="一座浮岛"><br>直接卸载掉该插件即恢复正常<br><img src="/2022/05/06/win10-hbuilderx-%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95-%E5%AF%BC%E8%87%B4%E7%A5%9E%E5%A5%87%E7%9A%84%E8%93%9D/pasted-2.png" alt="一座浮岛"><br><img src="/2022/05/06/win10-hbuilderx-%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95-%E5%AF%BC%E8%87%B4%E7%A5%9E%E5%A5%87%E7%9A%84%E8%93%9D/pasted-3.png" alt="一座浮岛"></p>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/troubleshoot/windows-client/performance/read-small-memory-dump-file#configure-the-dump-type" >Windows 创建的小内存转储文件<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.windowscentral.com/how-open-and-analyze-dump-error-files-windows-10" >需要科学上网|How to open and analyze crash dump files on Windows 10<i class="fas fa-external-link-alt"></i></a> </li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://answers.microsoft.com/zh-hans/windows/forum/all/windows-10/c172190f-278f-49ea-bbf9-adf211d30e02" >Windows 10 出现蓝屏，报win32kbase.sys ( win32kbase+fcfa0 ) <i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/yilang/p/11106122.html" >认识Dump文件<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
 
         </div>
 
@@ -230,29 +230,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/05/06/win10-hbuilderx-%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95-%E5%AF%BC%E8%87%B4%E7%A5%9E%E5%A5%87%E7%9A%84%E8%93%9D%E5%B1%8F/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">win10-hbuilderx 真机调试 导致神奇的蓝屏</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/02/18/Mysql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+                           href="/2022/04/11/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Mysql 模糊查询的几种方式</span>
+                                <span class="post-nav-title-item">平凡的世界</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">

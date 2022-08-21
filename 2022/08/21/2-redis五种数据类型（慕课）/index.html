@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="技术,分享,生活">
+    <meta name="description" content="这里是anlondon,欢迎留言交流">
+    <meta name="author" content="anlondon">
+    
+    <title>
+        
+            2. redis五种数据类型（慕课） |
+        
+        一座浮岛
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_my.png">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar_my.svg","favicon":"/images/logo_my.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"做自己的星辰，点缀这世界。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                一座浮岛
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">2. redis五种数据类型（慕课）</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar_my.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">anlondon</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-08-21 12:28:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Redis/">Redis</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>来源：免费<a class="link"   target="_blank" rel="noopener" href="https://www.imooc.com/video/14321" > redis的五种数据类型-慕课网<i class="fas fa-external-link-alt"></i></a><br><b style="color:red">课程只是基础介绍，详细指令见官网</b></p>
+<h2 id="整体介绍"><a href="#整体介绍" class="headerlink" title="整体介绍"></a>整体介绍</h2><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">存储的值</th>
+<th align="center">读写能力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">可以是字符串、整数或浮点，统称为元素</td>
+<td align="center">对字符串操作对整数类型加减</td>
+</tr>
+<tr>
+<td align="center">List</td>
+<td align="center">一个序列集合且每个节点都包好了一个元素</td>
+<td align="center">序列两端推入、或弹出元素修剪、查找或移除元素</td>
+</tr>
+<tr>
+<td align="center">Set</td>
+<td align="center">各不相同的元素</td>
+<td align="center">从集合中插入或者删除元素</td>
+</tr>
+<tr>
+<td align="center">Hash</td>
+<td align="center">有key-value的散列组，其中key是字符串，value是元素</td>
+<td align="center">按照key进行增加删除</td>
+</tr>
+<tr>
+<td align="center">Sort Set</td>
+<td align="center">带分数的score-value有序集合，其中score为浮点，value为元素</td>
+<td align="center">集合插入，按照分数范围查找</td>
+</tr>
+</tbody></table>
+<h2 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h2><ul>
+<li><p>string类型的键和值可以是 字符串(str)、整数(int)、浮点小数(float) </p>
+<table>
+<thead>
+<tr>
+<th align="center">key</th>
+<th align="center">value(string/int/float)</th>
+</tr>
+</thead>
+</table>
+</li>
+<li><p>操作string类型元素<br>设置一个string类型的元素<code># set key value</code><br>获取一个string类型的元素<code># get key</code><br>连接状态下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">set</span> string1 nihaoya~ <span class="comment">#设置一个string类型的元素</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">ok</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> get string1 <span class="comment">#获取该元素的值</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="string">&quot;nihaoya~&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">set</span> string2 123 <span class="comment">#设置一个整数值</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">ok</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> get string2 <span class="comment">#获取该元素的值</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="string">&quot;123&quot;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">set</span> 1 123456 <span class="comment">#设置一个key,value都为整数的元素</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">ok</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> get 1 <span class="comment">#获取该元素的值</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="string">&quot;123456&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p> string类型元素自增自减</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> incr string2 5 <span class="comment">#自增操作,表示string2+5，不写5默认为1</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 128</span></span><br><span class="line"><span class="meta">$</span><span class="bash">decrby string2  <span class="comment">#自减操作，默认减一</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 127</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="list类型"><a href="#list类型" class="headerlink" title="list类型"></a>list类型</h2><ul>
+<li><p>list是一个<strong>有序的列表</strong></p>
+</li>
+<li><p>list元素与string元素一样可以为：str,int,float,并且<strong>元素可以重复</strong></p>
+</li>
+<li><p>一个列表最多包含超40亿个元素</p>
+</li>
+<li><p>对list操作需要说明方向：<b style="color:red">左</b>或<b style="color:red">右</b></p>
+<blockquote>
+<p>假设我们有个list数据<br>list1=&gt;[1,2,3,4]<br>操作设置的方向，即设定从list的左l(left)/右r(right)操作为</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lpush list1 0 <span class="comment">#从左边插入一位</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 5  <span class="comment">#list1中元素个数为5</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">此时list1=&gt;[0,1,2,3,4]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rpop list1 <span class="comment">#从右边弹出一位</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) <span class="string">&quot;4&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">此时list1=&gt;[0,1,2,3]</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> llen list1 <span class="comment">#查看元素个数(不分左右，没有rlen)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 4</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="set类型"><a href="#set类型" class="headerlink" title="set类型"></a>set类型</h2><ul>
+<li><p>Set 是 String 类型的<strong>无序集合</strong>。集合<strong>成员是唯一的</strong>，这就意味着集合中不能出现重复的数据。<br>指令：s(set)-xxx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sadd set1 12 <span class="comment">#给set1插入一个元素12</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1  <span class="comment">#表示插入成功</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sadd set1 13</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sadd set1 13</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 0  <span class="comment">#表示插入失败</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">set1中有多少个元素</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> scard set1</span> </span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">判断某个元素是否在列表内</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sismember set1 13</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">删除某个元素</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> srem set1 13</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Redis 中集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是 O(1)。</p>
+</li>
+<li><p>每个集合可存储40多亿个成员。 </p>
+</li>
+</ul>
+<h2 id="hash类型"><a href="#hash类型" class="headerlink" title="hash类型"></a>hash类型</h2><ul>
+<li>Redis hash 是一个 string 类型的 key-value(键值对)的映射表，hash 特别适合用于存储对象。</li>
+<li>hash 的键值是一一对应的</li>
+<li>Redis 中每个 hash 可以存储40多亿键值对。<br>指令 h(hash)-xxx</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">插入一个键值到<span class="built_in">hash</span>表中，返回1表示插入成功</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hset hash1 key1 12</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hset hash1 key2 13</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hset hash1 key3 13</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hlen hash1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 3</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">hset的键(key)如果存在,且值(value)成功覆盖旧值就返回0</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hset hash1 key3 14</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">根据键获取值</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hmget hash1 key3 key1 key2</span></span><br><span class="line"><span class="meta">#</span><span class="bash">1) <span class="string">&quot;14&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2) <span class="string">&quot;12&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">3) <span class="string">&quot;13&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">获取全部内容</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hgetall hash1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">1) <span class="string">&quot;key1&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2) <span class="string">&quot;12&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">3) <span class="string">&quot;key12&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">4) <span class="string">&quot;13&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">5) <span class="string">&quot;key3&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">6) <span class="string">&quot;14&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">插入多条内容</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hmset hash2 name <span class="string">&quot;redis tutorial&quot;</span> description <span class="string">&quot;redis basic commands for caching&quot;</span> likes 20 visitors 23000</span></span><br><span class="line"><span class="meta">#</span><span class="bash">OK</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hgetall hash2</span></span><br><span class="line"><span class="meta">#</span><span class="bash">1) <span class="string">&quot;name&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2) <span class="string">&quot;redis tutorial&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">3) <span class="string">&quot;description&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">4) <span class="string">&quot;redis basic commands for caching&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">5) <span class="string">&quot;likes&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">6) <span class="string">&quot;20&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">7) <span class="string">&quot;visitors&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">8) <span class="string">&quot;23000&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="sort-set类型"><a href="#sort-set类型" class="headerlink" title="sort set类型"></a>sort set类型</h2><ul>
+<li><p>是一个有序集合，且不允许重复的value。</p>
+</li>
+<li><p>可看做一个排行榜，score为热度(分数)，value为内容(姓名)，rank为隐藏部分属于排行，score值最小rank越靠前</p>
+</li>
+<li><p>映射关系不同于hash的<code>key-value</code>,sortSet的映射为<code>score-value</code>，score为浮点数。<br>![RH3S5BR$YZNE0OIGHZZEU`0.png](/2022/08/21/2-redis五种数据类型（慕课）/2fca0ee6.png)</p>
+</li>
+<li><p><code>value</code>是唯一的，重复时会覆盖之前那条数据的<code>score</code>与<code>value</code>。</p>
+</li>
+<li><p><code>score</code>相同时，排序根据<code>value</code>中字段的字典顺序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加 table score value</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> zadd zset1 10.1 val1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> zadd zset1 11.2 val2</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> zadd zset1 12.3 val3</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">value相同时，覆盖之前的数据</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> zadd zset1 9.1 val1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> zcard zset1  <span class="comment">#查看元素个数</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 3</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> zrange zset1 0 2 withscores  <span class="comment">#根据score查出0到2的排序</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">1) <span class="string">&quot;val1&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2) <span class="string">&quot;9.0999999999999996&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">3) <span class="string">&quot;val2&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">4) <span class="string">&quot;11.199999999999999&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">5) <span class="string">&quot;val3&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">6) <span class="string">&quot;12.300000000000001&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">`score`相同时，排序根据`value`中字段的字典顺序</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> zadd zset1 12.3 val0</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> zrange zset1 0 3 withscores</span></span><br><span class="line"><span class="meta">#</span><span class="bash">1) <span class="string">&quot;val1&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2) <span class="string">&quot;9.0999999999999996&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">3) <span class="string">&quot;val2&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">4) <span class="string">&quot;11.199999999999999&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">5) <span class="string">&quot;val0&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">6) <span class="string">&quot;12.300000000000001&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">7) <span class="string">&quot;val3&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">8) <span class="string">&quot;12.300000000000001&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">查看某个value排序</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> zrank zset1 val2</span></span><br><span class="line"><span class="meta">#</span><span class="bash">(int) 1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/08/21/1-redis%E5%85%A5%E9%97%A8%E4%B8%8E%E5%BA%94%E7%94%A8%EF%BC%88%E6%85%95%E8%AF%BE%EF%BC%89/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">1.redis入门与应用（慕课）</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/21/Uncaught-RedisException-MISCONF-Redis-is-configured-to-save-RDB-snapshots-but-is-currently-not-able-to-persist-on-disk-Commands-that-may-modify-the-data-set-are-disabled-Please-check-Redis-logs-for-details-about-the-error/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Uncaught RedisException: MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data set are disabled. Please check Redis logs for details about the error.</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">anlondon</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">蜀ICP备2021002582号</a></div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

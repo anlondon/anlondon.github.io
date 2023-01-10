@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -230,12 +230,27 @@
             
 
             <div class="article-content keep-markdown-body">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>词云不报错不输出 wordcloud根据老师视频所说安装wordcloud<br><code>#pip install wordcloud</code>,并没有提示出错，反而是pip有新版本可以升级（忽略升级）<br>之后运行发现不报错也不输出任何文件<br><img src="/2022/08/21/%E8%AF%8D%E4%BA%91%E4%B8%8D%E6%8A%A5%E9%94%99%E4%B8%8D%E8%BE%93%E5%87%BA/98a9d64d.png" alt="4RR.png"></p>
-<p>查看库列表<br>以及版本 <code>#pip list</code><br><img src="/2022/08/21/%E8%AF%8D%E4%BA%91%E4%B8%8D%E6%8A%A5%E9%94%99%E4%B8%8D%E8%BE%93%E5%87%BA/2b1133fc.png" alt="UHS40B.png"></p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>词云不报错不输出 wordcloud根据老师视频所说安装wordcloud<br><code>#pip install wordcloud</code>,并没有提示出错，反而是pip有新版本可以升级（忽略升级）<br>之后运行发现不报错也不输出任何文件<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/%E8%AF%8D%E4%BA%91%E4%B8%8D%E6%8A%A5%E9%94%99%E4%B8%8D%E8%BE%93%E5%87%BA/98a9d64d.png"
+                      alt="4RR.png"
+                ></p>
+<p>查看库列表<br>以及版本 <code>#pip list</code><br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/%E8%AF%8D%E4%BA%91%E4%B8%8D%E6%8A%A5%E9%94%99%E4%B8%8D%E8%BE%93%E5%87%BA/2b1133fc.png"
+                      alt="UHS40B.png"
+                ></p>
 <p>然后在另一台win7上运行<code>#pip install wordcloud</code>后<br>测试发现能正常运行</p>
 <p>查看安装库版本</p>
 <blockquote>
-<p><img src="/2022/08/21/%E8%AF%8D%E4%BA%91%E4%B8%8D%E6%8A%A5%E9%94%99%E4%B8%8D%E8%BE%93%E5%87%BA/241e2271.png" alt="20200419114938.png"><br>cycler-0.10.0、 kiwisolver-1.2.0、 matplot1ib-3.2.1、 numpy-1.18.2、 pillow-7.1.1 、 pyparsing-2.4.7、 python-dateutil-2.8.1、 wordcloud-1.6.0</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/%E8%AF%8D%E4%BA%91%E4%B8%8D%E6%8A%A5%E9%94%99%E4%B8%8D%E8%BE%93%E5%87%BA/241e2271.png"
+                      alt="20200419114938.png"
+                ><br>cycler-0.10.0、 kiwisolver-1.2.0、 matplot1ib-3.2.1、 numpy-1.18.2、 pillow-7.1.1 、 pyparsing-2.4.7、 python-dateutil-2.8.1、 wordcloud-1.6.0</p>
 </blockquote>
 <p>对比发现<br><code>kiwisolver-1.2.0</code>,<code>matplot1ib-3.2.1</code>,<code>numpy-1.18.2</code>,<code>pillow-7.1.1 </code>等等版本和我电脑内版本不同<br>于是怀疑是国内安装源不一样，导致下载的版本不同<br>便对比<code>C:\Users\用户文件夹\pip\pip.ini</code><br>./pip/pip.ini是自己创建的，目的是重置pip为国内安装源</p>
 <p>这是清华的安装源，把内容复制到pip.ini内便可使用该源</p>
@@ -290,6 +305,15 @@
             
         </div>
 
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+
+            </div>
         
     </div>
 </div>
@@ -351,6 +375,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -463,6 +491,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -470,6 +502,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

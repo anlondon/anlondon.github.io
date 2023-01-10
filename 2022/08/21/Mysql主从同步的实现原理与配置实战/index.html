@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -244,7 +244,12 @@
 </li>
 </ol>
 <ol start="3">
-<li>主从同步的原理是什么？<br>首先我们来了解master-slave的体系结构。如下图：<br><img src="/2022/08/21/Mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98/28c3778b.png" alt="1853575-20191106144533657-720589077.png"></li>
+<li>主从同步的原理是什么？<br>首先我们来了解master-slave的体系结构。如下图：<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/Mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98/28c3778b.png"
+                      alt="1853575-20191106144533657-720589077.png"
+                ></li>
 </ol>
 <p>不管是delete、update、insert，还是创建函数、存储过程，所有的操作都在master上。当master有操作的时候,slave会快速的接收到这些操作，从而做同步。 </p>
 <p><strong>但是，这个机制是怎么实现的呢</strong>？在master机器上，主从同步事件会被写到特殊的log文件中(binary-log);在slave机器上，slave读取主从同步事件，并根据读取的事件变化，在slave库上做相应的更改。</p>
@@ -269,7 +274,17 @@
 </li>
 </ul>
 <ul>
-<li>3-4. 如何在master、slave上查看上述的线程？<br>使用SHOW PROCESSLIST命令可以查看。如图，在master机器上查看binlog dump线程<br><img src="/2022/08/21/Mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98/662782ab.png" alt="1853575-20191106144724728-957021626.png"><br>如图，在slave机器上查看I/O、SQL线程。<br><img src="/2022/08/21/Mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98/557584c1.png" alt="1853575-20191106144834058-593415606.png"></li>
+<li>3-4. 如何在master、slave上查看上述的线程？<br>使用SHOW PROCESSLIST命令可以查看。如图，在master机器上查看binlog dump线程<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/Mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98/662782ab.png"
+                      alt="1853575-20191106144724728-957021626.png"
+                ><br>如图，在slave机器上查看I/O、SQL线程。<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/Mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98/557584c1.png"
+                      alt="1853575-20191106144834058-593415606.png"
+                ></li>
 </ul>
 <p><strong>接下来给大家讲解mysql主从同步实战系统环境</strong>：系统的话大同小异，都差不多，我这里用的是ubuntu16.04+mysql5.7，用到两台服务器：其中master IP:192.168.33.22，另一个slave IP:192.168.33.33</p>
 <h3 id="master机器上的操作"><a href="#master机器上的操作" class="headerlink" title="master机器上的操作"></a>master机器上的操作</h3><ol>
@@ -394,6 +409,15 @@
         </div>
 
         
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#master%E6%9C%BA%E5%99%A8%E4%B8%8A%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">master机器上的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slave%E6%9C%BA%E5%99%A8%E4%B8%8A%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">slave机器上的操作</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
     </div>
 </div>
 
@@ -454,6 +478,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -566,6 +594,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -573,6 +605,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

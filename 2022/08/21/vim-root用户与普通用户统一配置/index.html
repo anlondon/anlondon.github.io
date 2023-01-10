@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -261,13 +261,28 @@
 <li><code>yum intasll vim*</code></li>
 <li><code>yum install vimx</code></li>
 </ul>
-<p>因为vim本身不支持系统剪贴板，加上yum的软件都不是最新的，所以要下vimx.<br>下好后<br><code>vim --version | grep clipboard</code><br><code>vimx --version | grep clipboard</code><br><img src="/2022/08/21/vim-root%E7%94%A8%E6%88%B7%E4%B8%8E%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE/d6d6cf2d.png" alt="d6d6cf2d.png"></p>
+<p>因为vim本身不支持系统剪贴板，加上yum的软件都不是最新的，所以要下vimx.<br>下好后<br><code>vim --version | grep clipboard</code><br><code>vimx --version | grep clipboard</code><br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/vim-root%E7%94%A8%E6%88%B7%E4%B8%8E%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE/d6d6cf2d.png"
+                      alt="d6d6cf2d.png"
+                ></p>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
 <li><p>vimrc配置<br>因为root和普通用户的目录不一样，而之所以root和普通用户的vim不一样就是因为用户目录里的vim配置文件<code>vimrc</code></p>
 <ul>
-<li><code>vim --version</code>查看<br><img src="/2022/08/21/vim-root%E7%94%A8%E6%88%B7%E4%B8%8E%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE/9cbabbbc.png" alt="9cbabbbc.png"><br>vim的系统配置文件在 <code>/etc/vimrc</code><br>root用户的vim配置文件在 <code>/root/.vim/vimrc</code> 当前是root，所以~表示的是root的用户目录/root<br>普通用户的vim配置文件  <code>/home/username/vimrc</code></li>
+<li><code>vim --version</code>查看<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/vim-root%E7%94%A8%E6%88%B7%E4%B8%8E%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE/9cbabbbc.png"
+                      alt="9cbabbbc.png"
+                ><br>vim的系统配置文件在 <code>/etc/vimrc</code><br>root用户的vim配置文件在 <code>/root/.vim/vimrc</code> 当前是root，所以~表示的是root的用户目录/root<br>普通用户的vim配置文件  <code>/home/username/vimrc</code></li>
 </ul>
-<p>因为我用的是vim-plug来管理vim插件的，所以我直接把root和普通用户的vimrc删了，然后在/etc/vimrc里配置<br>配置vim-plug：[<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/alex_bean/article/details/83821017" >CentOS 7 安装Vim8 Vim-Plug YouCompleteMe_Python_胖胖的ALEX-CSDN博客<i class="fas fa-external-link-alt"></i></a>的安装、配置vim-plug部分<img src="/2022/08/21/vim-root%E7%94%A8%E6%88%B7%E4%B8%8E%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE/35544677.png" alt="35544677.png"></p>
+<p>因为我用的是vim-plug来管理vim插件的，所以我直接把root和普通用户的vimrc删了，然后在/etc/vimrc里配置<br>配置vim-plug：[<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/alex_bean/article/details/83821017" >CentOS 7 安装Vim8 Vim-Plug YouCompleteMe_Python_胖胖的ALEX-CSDN博客<i class="fas fa-external-link-alt"></i></a>的安装、配置vim-plug部分<img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/vim-root%E7%94%A8%E6%88%B7%E4%B8%8E%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE/35544677.png"
+                      alt="35544677.png"
+                ></p>
 </li>
 <li><p>alias配置<br>root用户 <code>vim ~/.bashrc</code><br>  然后添加</p>
 </li>
@@ -334,6 +349,15 @@
         </div>
 
         
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">卸载安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
     </div>
 </div>
 
@@ -394,6 +418,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -506,6 +534,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -513,6 +545,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

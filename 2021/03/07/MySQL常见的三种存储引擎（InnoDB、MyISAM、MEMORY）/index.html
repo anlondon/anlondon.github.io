@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -241,12 +241,22 @@
             
 
             <div class="article-content keep-markdown-body">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-0.png" alt="一座浮岛"></p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-0.png"
+                      alt="一座浮岛"
+                ></p>
 <blockquote>
 <p>转载：<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/yuxiuyan/p/6511837.html" >MySQL常见的三种存储引擎（InnoDB、MyISAM、MEMORY） |博客园 my笔触<i class="fas fa-external-link-alt"></i></a><br>作者：于果</p>
 </blockquote>
 <p>MySQL是我们经常使用的数据库处理系统（DBMS），不知小伙伴们有没有注意过其中的“存储引擎”（storage_engine）呢？有时候面试题中也会问道MySQL几种常用的存储引擎的区别。这次就简短侃一下存储引擎那些事儿。</p>
-<p><img src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-1.png" alt="一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-1.png"
+                      alt="一座浮岛"
+                ></p>
 <blockquote>
 <p>引擎（Engine）是电子平台上开发程序或系统的<span style="color:red">核心组件</span>。利用引擎，开发者可迅速建立、铺设程序所需的功能，或利用其辅助程序的运转。一般而言，引擎是一个程序或一套系统的支持部分。常见的程序引擎有游戏引擎，搜索引擎，杀毒引擎等。</p>
 </blockquote>
@@ -272,7 +282,12 @@
 <p>注意，MEMORY用到的很少，因为它是把数据存到内存中，如果内存出现异常就会影响数据。如果重启或者关机，所有数据都会消失。因此，基于MEMORY的表的生命周期很短，一般是一次性的。</p>
 <p><span style="font-size: 18pt; font-family: 楷体">四.怎样选择存储引擎</span></p>
 <p>在实际工作中，选择一个合适的存储引擎是一个比较复杂的问题。每种存储引擎都有自己的优缺点，不能笼统地说谁比谁好。</p>
-<p><img src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-2.png" alt="MySQL常见的三种存储引擎 |博客园 my笔触"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/07/MySQL%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%88InnoDB%E3%80%81MyISAM%E3%80%81MEMORY/pasted-2.png"
+                      alt="MySQL常见的三种存储引擎 |博客园 my笔触"
+                ></p>
 <p><u><strong>InnoDB</strong></u>：支持事务处理，支持外键，支持崩溃修复能力和并发控制。如果需要<strong>对事务的完整性要求比较高</strong>（比如银行），<strong>要求实现并发控制</strong>（比如售票），那选择InnoDB有很大的优势。如果需要<strong>频繁的更新、删除</strong>操作的数据库，也可以选择InnoDB，因为支持事务的提交（commit）和回滚（rollback）。</p>
 <p><u><strong>MyISAM</strong></u>：插入数据快，空间和内存使用比较低。如果表主要是<strong>用于插入新记录和读出记录</strong>，那么选择MyISAM能实现处理高效率。如果应用的完整性、并发性要求比 较低，也可以使用。</p>
 <p><u><strong>MEMORY</strong></u>：所有的数据都在内存中，数据的处理速度快，但是安全性不高。如果需要<strong>很快的读写速度</strong>，对数据的安全性要求较低，可以选择MEMOEY。它对表的大小有要求，不能建立太大的表。所以，这类数据库只使用在相对较小的数据库表。</p>
@@ -332,6 +347,15 @@
             
         </div>
 
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+
+            </div>
         
     </div>
 </div>
@@ -393,6 +417,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -505,6 +533,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -512,6 +544,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

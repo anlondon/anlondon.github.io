@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -234,28 +234,73 @@
 <p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/txxt/p/8655771.html" >使用phpstorm将本地代码实时自动同步到远程服务器<i class="fas fa-external-link-alt"></i></a><br>作者：<a class="link"   target="_blank" rel="noopener" href="https://home.cnblogs.com/u/txxt/" >TXXT|博客园<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <p>平常在维护网站的时候，经常遇到网站代码需要修改的地方，一般情况下就是先使用FTP传输传输到本地然后修改完毕再上传，或者你使用宝塔面板或者windows服务器也可以直接在服务器上编辑代码，这样的操作如果是小小的改动一下是没问题很简单，但是如果修改的地方很麻烦，需要不断调试，那么这简直就是一种折磨，所以你就要想一个更省事的办法了，今天主机笔记就为大家介绍使用JetBrains家的phpstorm实现远程编码，本地编辑实时自动同步到远程web服务器。</p>
-<h4 id="本地连接配置web服务器"><a href="#本地连接配置web服务器" class="headerlink" title="本地连接配置web服务器"></a>本地连接配置web服务器</h4><p>要实现远程编码，首先我们要把我们本地的webstom项目连接到服务器，最好的方法就是使用FTP连接我们的网站或者项目<br><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-3.png" alt="一座浮岛"></p>
+<h4 id="本地连接配置web服务器"><a href="#本地连接配置web服务器" class="headerlink" title="本地连接配置web服务器"></a>本地连接配置web服务器</h4><p>要实现远程编码，首先我们要把我们本地的webstom项目连接到服务器，最好的方法就是使用FTP连接我们的网站或者项目<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-3.png"
+                      alt="一座浮岛"
+                ></p>
 <p>在webstom编辑器依次选择 Tools – Deployment – Configuration，添加一个远程主机，这个名字只是备注用，随便写，协议选择FTP(也支持SFTP、本地等)</p>
-<p><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-2.png" alt="一座浮岛"></p>
-<p><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-0.png" alt="一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-2.png"
+                      alt="一座浮岛"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-0.png"
+                      alt="一座浮岛"
+                ></p>
 <p>这个时候就是主要就是填写远程主机的FTP信息了，除了基本的FTP信息填写完毕外，其他需要修改的我在图上用箭头标出</p>
 <p>Root path  这个选项是要打开的路径，这样做主要是为了防止误操作影响项目，填写后上级目录不会展示，当然你可以不写</p>
 <p>Advanced options 这个选项是设置 Passive mode 设置FTP连接模式为被动模式</p>
 <p>Web server root URL   这里就是调试的网址</p>
 <p>当所有的信息确认无误后，点击一下 Test FTP connection，测试是否连接成功</p>
-<p><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-1.png" alt="一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-1.png"
+                      alt="一座浮岛"
+                ></p>
 <p>最后，我们再调整一下本地和远程主机的映射即可，如果要添加了多个远程主机的话，记得把要使用的项目点击一下 Use this server as default</p>
-<p>远程主机配置好后我们就可以看一下目录结构了，点击 Tools – Deployment – Broswse Remote Host，然后就会看到远程的文件了<br><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-5.png" alt="一座浮岛"></p>
+<p>远程主机配置好后我们就可以看一下目录结构了，点击 Tools – Deployment – Broswse Remote Host，然后就会看到远程的文件了<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-5.png"
+                      alt="一座浮岛"
+                ></p>
 <p>这个时候其实我们本地还没有文件，要把远程的项目下载到本地，在远程主机上右键 – Download from here即可，稍等一会下载完毕，本地项目即可显示</p>
 <h4 id="设置代码自动同步到远程服务器"><a href="#设置代码自动同步到远程服务器" class="headerlink" title="设置代码自动同步到远程服务器"></a>设置代码自动同步到远程服务器</h4><p>在前面我们已经把本地文件和远程文件对接上了，但是这时候要实现同步还是要手动传输的，距离实现自动化还差一点点</p>
 <p>打开 Tools – Deployment – Options，我们把Upload changed files 一项改为 On explicit save action，意思也就是每次保存都会同步到远程服务器</p>
-<p><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-4.png" alt="一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-4.png"
+                      alt="一座浮岛"
+                ></p>
 <p>到这里，基本设置完毕，可以看到我下面的测试，完全是在本地操作，自动在服务器创建新的文件，而且本地每保存一次，就会自动的传输到服务器并记录日志</p>
-<p><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-6.png" alt="一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-6.png"
+                      alt="一座浮岛"
+                ></p>
 <hr>
 <h4 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h4><p>测试连接成功，但是却始终无法上传，在配置界面出现如下提示：<br><code>Automatic upload will not work，because default server&#39;蓝轩小程序”has no valid mappings.</code></p>
-<p><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-7.png" alt="一座浮岛"></p>
-<p><img src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-8.png" alt="一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-7.png"
+                      alt="一座浮岛"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2021/03/12/%E4%BD%BF%E7%94%A8phpstorm%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/pasted-8.png"
+                      alt="一座浮岛"
+                ></p>
 <p>参考：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/jiangyutongyangyi/article/details/103474688" >Default server mservice has no valid mappings. Automatic upload is not enabled<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
@@ -304,6 +349,15 @@
             
         </div>
 
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E8%BF%9E%E6%8E%A5%E9%85%8D%E7%BD%AEweb%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">本地连接配置web服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">设置代码自动同步到远程服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">可能遇到的问题</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
         
     </div>
 </div>
@@ -365,6 +419,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -477,6 +535,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -484,6 +546,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -236,10 +236,20 @@
 <p>相信玩过爬虫的朋友都知道selenium，一个自动化测试的神器工具。写个Python自动化脚本解放双手基本上是常规的操作了，爬虫爬不了的，就用自动化测试凑一凑。</p>
 <p>虽然selenium有完备的文档，但也需要一定的学习成本，对于一个纯小白来讲还是有些门槛的。</p>
 <p>最近，微软开源了一个项目叫「playwright-python」，简直碉堡了！这个项目是针对Python语言的纯自动化工具，连代码都不用写，就能实现自动化功能。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201213224045106.gif#pic_center"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/20201213224045106.gif#pic_center"
+                     
+                ></p>
 <p>可能你会觉得有点不可思议，但它就是这么厉害。下面我们一起看下这个神器。</p>
 <h4 id="1-Playwright介绍"><a href="#1-Playwright介绍" class="headerlink" title="1. Playwright介绍"></a>1. Playwright介绍</h4><p><code>Playwright</code>是一个强大的Python库，仅用一个API即可自动执行 <code>Chromium</code>、<code>Firefox</code>、<code>WebKit</code>等主流浏览器自动化操作，并同时支持以无头模式、有头模式运行。</p>
-<p>Playwright提供的自动化技术是绿色的、功能强大、可靠且快速，支持Linux、Mac以及Windows操作系统。<br><img src="https://img-blog.csdnimg.cn/20201213224114339.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1eGlhb3NtZA==,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>Playwright提供的自动化技术是绿色的、功能强大、可靠且快速，支持Linux、Mac以及Windows操作系统。<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/20201213224114339.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1eGlhb3NtZA==,size_16,color_FFFFFF,t_70#pic_center"
+                     
+                ></p>
 <h4 id="2-Playwright使用"><a href="#2-Playwright使用" class="headerlink" title="2.Playwright使用"></a>2.Playwright使用</h4><h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h6><p><code>Playwright</code>的安装非常简单，两步走。</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装playwright库</span><br><span class="line">pip install playwright</span><br><span class="line"></span><br><span class="line"># 安装浏览器驱动文件（安装过程稍微有点慢）</span><br><span class="line">python -m playwright install</span><br></pre></td></tr></table></figure>
 <p>上面两个pip操作分别安装：</p>
@@ -261,7 +271,12 @@
 </code></pre>
 <p>比如，我要在 <code>baidu.com</code> 搜索，用<code>chromium</code>驱动，将结果保存为<code>my.py</code>的<code>python</code>文件。</p>
 <p><code>python -m playwright codegen --target python -o &#39;my.py&#39; -b chromium https://www.baid</code></p>
-<p>命令行输入后会自动打开浏览器，然后可以看见在浏览器上的一举一动都会被自动翻译成代码，如下所示。<br><img src="https://img-blog.csdnimg.cn/20201213224556553.gif#pic_center"><br>结束后自动关闭浏览器，保存生成的自动化脚本到py文件。</p>
+<p>命令行输入后会自动打开浏览器，然后可以看见在浏览器上的一举一动都会被自动翻译成代码，如下所示。<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/20201213224556553.gif#pic_center"
+                     
+                ><br>结束后自动关闭浏览器，保存生成的自动化脚本到py文件。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> playwright <span class="keyword">import</span> sync_playwright</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">playwright</span>):</span></span><br><span class="line">    browser = playwright.chromium.launch(headless=<span class="literal">False</span>)</span><br><span class="line">    context = browser.newContext()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Open new page</span></span><br><span class="line">    page = context.newPage()</span><br><span class="line"></span><br><span class="line">    page.goto(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">    page.click(<span class="string">&quot;input[name=\&quot;wd\&quot;]&quot;</span>)</span><br><span class="line"></span><br><span class="line">    page.fill(<span class="string">&quot;input[name=\&quot;wd\&quot;]&quot;</span>, <span class="string">&quot;jingdong&quot;</span>)</span><br><span class="line"></span><br><span class="line">    page.click(<span class="string">&quot;text=\&quot;京东\&quot;&quot;</span>)</span><br><span class="line">  </span><br><span class="line">    <span class="comment"># Click //a[normalize-space(.)=&#x27;京东JD.COM官网 多快好省 只为品质生活&#x27;]</span></span><br><span class="line">    <span class="keyword">with</span> page.expect_navigation():</span><br><span class="line">        <span class="keyword">with</span> page.expect_popup() <span class="keyword">as</span> popup_info:</span><br><span class="line">            page.click(<span class="string">&quot;//a[normalize-space(.)=&#x27;京东JD.COM官网 多快好省 只为品质生活&#x27;]&quot;</span>)</span><br><span class="line">        page1 = popup_info.value</span><br><span class="line">    <span class="comment"># ---------------------</span></span><br><span class="line">    context.close()</span><br><span class="line">    browser.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> sync_playwright() <span class="keyword">as</span> playwright:</span><br><span class="line">    run(playwright)</span><br></pre></td></tr></table></figure>
 
 <p>此外，<code>playwright</code>还提供了同步和异步的API接口，文档如下。</p>
@@ -336,6 +351,15 @@
         </div>
 
         
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Playwright%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">1. Playwright介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Playwright%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">2.Playwright使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.0.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BD%95%E5%88%B6"><span class="nav-number">2.0.2.</span> <span class="nav-text">录制</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">2.0.3.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5"><span class="nav-number">2.0.4.</span> <span class="nav-text">异步</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="nav-number">2.0.5.</span> <span class="nav-text">移动端</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number"></span> <span class="nav-text">总结</span></a>
+    </div>
+</div>
+
+            </div>
+        
     </div>
 </div>
 
@@ -396,6 +420,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -508,6 +536,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -515,6 +547,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -233,21 +233,51 @@
                 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>电脑系统 : win7<br>putty : Release 0.74</p>
 <p>最近在搞 vim7.4 的时候，遇到特殊字符显示乱码的问题，刚开始以为是系统输出和插件版本的问题，后来在手机上连接的时候发现手机上却没有问题。</p>
 <blockquote>
-<p>电脑上：<img src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-0.png"></p>
-<p>手机上：<img src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-1.png"></p>
+<p>电脑上：<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-0.png"
+                     
+                ></p>
+<p>手机上：<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-1.png"
+                     
+                ></p>
 </blockquote>
 <h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
 <li>设置输出编码<br>在 ~/.vimrc 中添加以下代码，设置输出编码<br>具体的见 <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/x13945/article/details/15020307" >vim 编码设置讲解<i class="fas fa-external-link-alt"></i></a><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;设置编码自动识别</span><br><span class="line">set termencoding=utf-8</span><br><span class="line">set fileencoding=chinese set fileencodings=ucs-bom, utf-8, chinese set langmenu=zh_CN. utf-8</span><br></pre></td></tr></table></figure></li>
 <li>切换字体；因为 putty 软件默认的字体是 <code>courier New</code> ，而该字体win7上没有，所以切换为 <code>新宋体</code> 即可。<blockquote>
-<p>注意：字符涵盖最多的是 Unicode 的，它包含了全球所有语言的文字和特殊字符，导致 Unicode 字库很庞大，一般字体并不会完全包含，只会选取常用的特殊字符编进字体软件中。<br>初始设置：<br><img src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-2.png"></p>
+<p>注意：字符涵盖最多的是 Unicode 的，它包含了全球所有语言的文字和特殊字符，导致 Unicode 字库很庞大，一般字体并不会完全包含，只会选取常用的特殊字符编进字体软件中。<br>初始设置：<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-2.png"
+                     
+                ></p>
 </blockquote>
 </li>
 </ol>
-<p> 手动修改为 新宋体 ，并调整光标样式：<br> <img src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-3.png" alt="来自anlondon博客"></p>
+<p> 手动修改为 新宋体 ，并调整光标样式：<br> <img  
+                     lazyload
+                     alt="image"
+                     data-src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-3.png"
+                      alt="来自anlondon博客"
+                ></p>
 <blockquote>
-<p>选择 粗体，不然字体很细<br> 附上中文翻译<br> <img src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-4.png"></p>
+<p>选择 粗体，不然字体很细<br> 附上中文翻译<br> <img  
+                     lazyload
+                     alt="image"
+                     data-src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-4.png"
+                     
+                ></p>
 </blockquote>
-<p>最后附上调整后的样式<br><img src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-5.png"></p>
+<p>最后附上调整后的样式<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://anlondon.cn:4000/2021/02/04/vim-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%B8%8D/pasted-5.png"
+                     
+                ></p>
 <blockquote>
 <p>当然并不是所有的特殊字符都能正常显示，这个就只能手动调整了</p>
 </blockquote>
@@ -305,6 +335,15 @@
             
         </div>
 
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
         
     </div>
 </div>
@@ -366,6 +405,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -478,6 +521,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -485,6 +532,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

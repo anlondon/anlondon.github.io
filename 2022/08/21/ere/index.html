@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -235,8 +235,28 @@
 <p>摘自 <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/yyx3214/article/details/97097696?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" >连接本地mysql时出现2003-Cant connect to MySql server on localhost(10061)错误_-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <p>前言<br>这两天打开mysql总是报错，打不开，但是瞎倒腾会又能打开了，上网查大家的解决方案吧，大家的内容有太多了，最后也不知道到底需要怎么做才能解决问题。<br>o(╥﹏╥)o<br>大家放心，问题已经解决了，非常简单，根本没有别人写的那么麻烦，话不多说直接上图。</p>
-<p>第一步<br>Windows+R电脑左下方会出现此窗口，输入services.msc回车，弹出第二个窗口，然后把mysql启动就ok了。<br><img src="/2022/08/21/ere/a28c9ff2.png" alt="09cdb045.png"><br><img src="/2022/08/21/ere/cce03f22.png" alt="33079480.png"></p>
-<p>第二步<br>如果第一步操作，输入services.msc回车，没有找到MySQL<br>Windows+R电脑左下方会出现此窗口，输入cmd回车，输入mysqlld.exe –install回车<br><img src="/2022/08/21/ere/126c4680.png" alt="2019072408323593.png"><br><img src="/2022/08/21/ere/0b6bc1fd.png" alt="20190724083246844.png"></p>
+<p>第一步<br>Windows+R电脑左下方会出现此窗口，输入services.msc回车，弹出第二个窗口，然后把mysql启动就ok了。<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/ere/a28c9ff2.png"
+                      alt="09cdb045.png"
+                ><br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/ere/cce03f22.png"
+                      alt="33079480.png"
+                ></p>
+<p>第二步<br>如果第一步操作，输入services.msc回车，没有找到MySQL<br>Windows+R电脑左下方会出现此窗口，输入cmd回车，输入mysqlld.exe –install回车<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/ere/126c4680.png"
+                      alt="2019072408323593.png"
+                ><br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/21/ere/0b6bc1fd.png"
+                      alt="20190724083246844.png"
+                ></p>
 <p>第三步<br>第三步就是重新执行第一步，这样就好了，非常简单吧。<br>其实连接本地mysql会报这种错，都是mysql没启动，如果远程mysql连接不上，报这个错，没准是服务器的mysql没启动。O(∩_∩)O哈哈~我猜测。</p>
 
             </div>
@@ -285,6 +305,15 @@
             
         </div>
 
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+
+            </div>
         
     </div>
 </div>
@@ -346,6 +375,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -458,6 +491,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -465,6 +502,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

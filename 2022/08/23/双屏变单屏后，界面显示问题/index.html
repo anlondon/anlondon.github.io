@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -235,12 +235,22 @@
 <h4 id="方法一：可以获取焦点"><a href="#方法一：可以获取焦点" class="headerlink" title="方法一：可以获取焦点"></a>方法一：可以获取焦点</h4><blockquote>
 <p>可以获取焦点：任务栏点击软件，会在桌面显示，但是软件顶部超过了窗口，无法点击移动</p>
 </blockquote>
-<p><img src="/2022/08/23/%E5%8F%8C%E5%B1%8F%E5%8F%98%E5%8D%95%E5%B1%8F%E5%90%8E%EF%BC%8C%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%97%AE/pasted-0.png" alt="软件顶部超过了窗口，无法被点击到|一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/23/%E5%8F%8C%E5%B1%8F%E5%8F%98%E5%8D%95%E5%B1%8F%E5%90%8E%EF%BC%8C%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%97%AE/pasted-0.png"
+                      alt="软件顶部超过了窗口，无法被点击到|一座浮岛"
+                ></p>
 <ol>
 <li>点击软件界面</li>
 <li><code>win</code>+方向键；</li>
 </ol>
-<p><img src="/2022/08/23/%E5%8F%8C%E5%B1%8F%E5%8F%98%E5%8D%95%E5%B1%8F%E5%90%8E%EF%BC%8C%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%97%AE/pasted-1.png" alt="一座浮岛"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/23/%E5%8F%8C%E5%B1%8F%E5%8F%98%E5%8D%95%E5%B1%8F%E5%90%8E%EF%BC%8C%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%97%AE/pasted-1.png"
+                      alt="一座浮岛"
+                ></p>
 <h4 id="方法二：无法获取焦点"><a href="#方法二：无法获取焦点" class="headerlink" title="方法二：无法获取焦点"></a>方法二：无法获取焦点</h4><blockquote>
 <p>无法获取焦点：任务栏点击软件，<strong>不会在桌面显示</strong>，即使关闭<strong>软件重启后，问题依旧存在</strong><br>多见于win10;</p>
 </blockquote>
@@ -248,7 +258,12 @@
 <li>启动软件，点击状态栏软件图标，让软件拥有焦点。</li>
 <li>按住 Alt + 空格，然后按 M (移动软件界面)。</li>
 <li>按一下方向键，比如左。</li>
-<li>按住鼠标左键，移动鼠标。<br><img src="/2022/08/23/%E5%8F%8C%E5%B1%8F%E5%8F%98%E5%8D%95%E5%B1%8F%E5%90%8E%EF%BC%8C%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%97%AE/GIF.gif" alt="一座浮岛"></li>
+<li>按住鼠标左键，移动鼠标。<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/2022/08/23/%E5%8F%8C%E5%B1%8F%E5%8F%98%E5%8D%95%E5%B1%8F%E5%90%8E%EF%BC%8C%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%97%AE/GIF.gif"
+                      alt="一座浮岛"
+                ></li>
 </ol>
 
             </div>
@@ -297,6 +312,15 @@
             
         </div>
 
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%84%A6%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">方法一：可以获取焦点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E7%84%A6%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">方法二：无法获取焦点</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
         
     </div>
 </div>
@@ -358,6 +382,10 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         <!-- go comment -->
@@ -470,6 +498,10 @@
 
 
 
+    
+<script src="/js/lazyload.js"></script>
+
+
 
 <div class="post-scripts pjax">
     
@@ -477,6 +509,14 @@
 <script src="/js/post-helper.js"></script>
 
         
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
         
     
 </div>

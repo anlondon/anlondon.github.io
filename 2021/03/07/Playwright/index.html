@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="技术,分享,生活">
+    <meta name="description" content="这里是anlondon,欢迎留言交流">
+    <meta name="author" content="anlondon">
+    
+    <title>
+        
+            Playwright |
+        
+        一座浮岛
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_my.png">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar_my.svg","favicon":"/images/logo_my.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":"做自己的星辰，点缀这世界。","font_color":null,"hitokoto":true},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                一座浮岛
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Playwright</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar_my.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">anlondon</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-03-07 19:28:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p>转载：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/yuxiaosmd/article/details/111147119?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-1.control" >微软开源最强Python自动化神器Playwright！不用写一行代码！<i class="fas fa-external-link-alt"></i></a><br>作者：Python数据科学</p>
+</blockquote>
+<p>相信玩过爬虫的朋友都知道selenium，一个自动化测试的神器工具。写个Python自动化脚本解放双手基本上是常规的操作了，爬虫爬不了的，就用自动化测试凑一凑。</p>
+<p>虽然selenium有完备的文档，但也需要一定的学习成本，对于一个纯小白来讲还是有些门槛的。</p>
+<p>最近，微软开源了一个项目叫「playwright-python」，简直碉堡了！这个项目是针对Python语言的纯自动化工具，连代码都不用写，就能实现自动化功能。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201213224045106.gif#pic_center"></p>
+<p>可能你会觉得有点不可思议，但它就是这么厉害。下面我们一起看下这个神器。</p>
+<h4 id="1-Playwright介绍"><a href="#1-Playwright介绍" class="headerlink" title="1. Playwright介绍"></a>1. Playwright介绍</h4><p><code>Playwright</code>是一个强大的Python库，仅用一个API即可自动执行 <code>Chromium</code>、<code>Firefox</code>、<code>WebKit</code>等主流浏览器自动化操作，并同时支持以无头模式、有头模式运行。</p>
+<p>Playwright提供的自动化技术是绿色的、功能强大、可靠且快速，支持Linux、Mac以及Windows操作系统。<br><img src="https://img-blog.csdnimg.cn/20201213224114339.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1eGlhb3NtZA==,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h4 id="2-Playwright使用"><a href="#2-Playwright使用" class="headerlink" title="2.Playwright使用"></a>2.Playwright使用</h4><h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h6><p><code>Playwright</code>的安装非常简单，两步走。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装playwright库</span><br><span class="line">pip install playwright</span><br><span class="line"></span><br><span class="line"># 安装浏览器驱动文件（安装过程稍微有点慢）</span><br><span class="line">python -m playwright install</span><br></pre></td></tr></table></figure>
+<p>上面两个pip操作分别安装：</p>
+<ul>
+<li>安装Playwright依赖库，需要Python3.7+</li>
+<li>安装Chromium、Firefox、WebKit等浏览器的驱动文件</li>
+</ul>
+<h6 id="录制"><a href="#录制" class="headerlink" title="录制"></a><strong>录制</strong></h6><p>使用 <code>Playwright</code> 无需写一行代码，我们只需手动操作浏览器，它会录制我们的操作，然后自动生成代码脚本。</p>
+<p>下面就是录制的命令<code>codegen</code>，仅仅一行。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 命令行键入 --<span class="built_in">help</span> 可看到所有选项</span></span><br><span class="line">python -m playwright codegen</span><br></pre></td></tr></table></figure>
+<p><code>codegen</code> 的用法可以使用 <code>--help</code> 查看，如果简单使用就是直接在命令后面加上url链接，如果有其他需要可以添加<code>options</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">python -m playwright codegen --help</span><br><span class="line">Usage: index codegen [options] [url]</span><br><span class="line"></span><br><span class="line">open page and generate code for user actions</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -o, --output &lt;file name&gt;  saves the generated script to a file</span><br><span class="line">  --target &lt;language&gt;       language to use, one of javascript, python, python-async, csharp (default: &quot;python&quot;)</span><br><span class="line">  -h, --help                display help for command</span><br><span class="line"></span><br><span class="line">Examples:</span><br><span class="line"></span><br><span class="line"><span class="meta">  $</span><span class="bash"> codegen</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> codegen --target=python</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> -b webkit codegen https://example.com</span></span><br></pre></td></tr></table></figure>
+<p>options含义：</p>
+<pre><code>-o：将录制的脚本保存到一个文件
+
+–target：规定生成脚本的语言，有JS和Python两种，默认为Python
+
+-b：指定浏览器驱动
+</code></pre>
+<p>比如，我要在 <code>baidu.com</code> 搜索，用<code>chromium</code>驱动，将结果保存为<code>my.py</code>的<code>python</code>文件。</p>
+<p><code>python -m playwright codegen --target python -o &#39;my.py&#39; -b chromium https://www.baid</code></p>
+<p>命令行输入后会自动打开浏览器，然后可以看见在浏览器上的一举一动都会被自动翻译成代码，如下所示。<br><img src="https://img-blog.csdnimg.cn/20201213224556553.gif#pic_center"><br>结束后自动关闭浏览器，保存生成的自动化脚本到py文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> playwright <span class="keyword">import</span> sync_playwright</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">playwright</span>):</span></span><br><span class="line">    browser = playwright.chromium.launch(headless=<span class="literal">False</span>)</span><br><span class="line">    context = browser.newContext()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Open new page</span></span><br><span class="line">    page = context.newPage()</span><br><span class="line"></span><br><span class="line">    page.goto(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">    page.click(<span class="string">&quot;input[name=\&quot;wd\&quot;]&quot;</span>)</span><br><span class="line"></span><br><span class="line">    page.fill(<span class="string">&quot;input[name=\&quot;wd\&quot;]&quot;</span>, <span class="string">&quot;jingdong&quot;</span>)</span><br><span class="line"></span><br><span class="line">    page.click(<span class="string">&quot;text=\&quot;京东\&quot;&quot;</span>)</span><br><span class="line">  </span><br><span class="line">    <span class="comment"># Click //a[normalize-space(.)=&#x27;京东JD.COM官网 多快好省 只为品质生活&#x27;]</span></span><br><span class="line">    <span class="keyword">with</span> page.expect_navigation():</span><br><span class="line">        <span class="keyword">with</span> page.expect_popup() <span class="keyword">as</span> popup_info:</span><br><span class="line">            page.click(<span class="string">&quot;//a[normalize-space(.)=&#x27;京东JD.COM官网 多快好省 只为品质生活&#x27;]&quot;</span>)</span><br><span class="line">        page1 = popup_info.value</span><br><span class="line">    <span class="comment"># ---------------------</span></span><br><span class="line">    context.close()</span><br><span class="line">    browser.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> sync_playwright() <span class="keyword">as</span> playwright:</span><br><span class="line">    run(playwright)</span><br></pre></td></tr></table></figure>
+
+<p>此外，<code>playwright</code>还提供了同步和异步的API接口，文档如下。</p>
+<blockquote>
+<p>链接：<a class="link"   target="_blank" rel="noopener" href="https://microsoft.github.io/playwright-python/index.html" >https://microsoft.github.io/playwright-python/index.html<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h6 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h6><p>下面示例代码：依次打开三个浏览器，前往baidu搜索，截图后退出。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from playwright import sync_playwright</span><br><span class="line"></span><br><span class="line">with sync_playwright() as p:</span><br><span class="line">    for browser_type in [p.chromium, p.firefox, p.webkit]:</span><br><span class="line">        browser = browser_type.launch()</span><br><span class="line">        page = browser.newPage()</span><br><span class="line">        page.goto(&#x27;https://baidu.com/&#x27;)</span><br><span class="line">        page.screenshot(path=f&#x27;example-&#123;browser_type.name&#125;.png&#x27;)</span><br><span class="line">        browser.close()</span><br></pre></td></tr></table></figure>
+
+<h6 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h6><p>异步操作可结合asyncio同时进行三个浏览器操作。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line">from playwright import async_playwright</span><br><span class="line"></span><br><span class="line">async def main():</span><br><span class="line">    async with async_playwright() as p:</span><br><span class="line">        for browser_type in [p.chromium, p.firefox, p.webkit]:</span><br><span class="line">            browser = await browser_type.launch()</span><br><span class="line">            page = await browser.newPage()</span><br><span class="line">            await page.goto(&#x27;http://baidu.com/&#x27;)</span><br><span class="line">            await page.screenshot(path=f&#x27;example-&#123;browser_type.name&#125;.png&#x27;)</span><br><span class="line">            await browser.close()</span><br><span class="line"></span><br><span class="line">asyncio.get_event_loop().run_until_complete(main())</span><br></pre></td></tr></table></figure>
+
+<h6 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h6><p>更厉害的是，playwright还可支持移动端的浏览器模拟。<br>下面是官方文档提供的一段代码，模拟在给定地理位置上手机iphone 11 pro上的Safari浏览器，首先导航到maps.google.com，然后执行定位并截图。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from playwright import sync_playwright</span><br><span class="line"></span><br><span class="line">with sync_playwright() as p:</span><br><span class="line">    iphone_11 = p.devices[&#x27;iPhone 11 Pro&#x27;]</span><br><span class="line">    browser = p.webkit.launch(headless=False)</span><br><span class="line">    context = browser.newContext(</span><br><span class="line">        **iphone_11,</span><br><span class="line">        locale=&#x27;en-US&#x27;,</span><br><span class="line">        geolocation=&#123; &#x27;longitude&#x27;: 12.492507, &#x27;latitude&#x27;: 41.889938 &#125;,</span><br><span class="line">        permissions=[&#x27;geolocation&#x27;]</span><br><span class="line">    )</span><br><span class="line">    page = context.newPage()</span><br><span class="line">    page.goto(&#x27;https://maps.google.com&#x27;)</span><br><span class="line">    page.click(&#x27;text=&quot;Your location&quot;&#x27;)</span><br><span class="line">    page.screenshot(path=&#x27;colosseum-iphone.png&#x27;)</span><br><span class="line">    browser.close()</span><br></pre></td></tr></table></figure>
+<p>另外，还可以配合<code>pytest</code>插件一起使用，感兴趣可以自己试一下。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>playwright</code>相比已有的自动化测试工具有很多优势，比如：</p>
+<ul>
+<li>跨浏览器，支持Chromium、Firefox、WebKit</li>
+<li>跨操作系统，支持Linux、Mac、Windows</li>
+<li>可提供录制生成代码功能，解放双手</li>
+<li>可用于移动端</li>
+</ul>
+<p>目前存在的缺点就是生态和文档还不是非常完备，比如没有API中文文档、没有较好的教程和示例供学习。不过相信，随着知道的人越来越多，未来会越来越好。</p>
+<blockquote>
+<p>GitHub链接：<a class="link"   target="_blank" rel="noopener" href="https://github.com/microsoft/playwright-python" >https://github.com/microsoft/playwright-python<i class="fas fa-external-link-alt"></i></a><br>开源组织：Microsoft</p>
+</blockquote>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/03/07/tp%E5%A4%9A%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ftp多用户配置</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/03/07/apache-%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96index-html/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">apache 无法读取index.html</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">anlondon</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">蜀ICP备2021002582号</a></div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -2652,7 +2652,7 @@ pre .javascript .function {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: url("https://api.likepoems.com/img/aliyun/pc") center center/cover no-repeat;
+  background: url("https://api.likepoems.com/img/aliyun/nature") center center/cover no-repeat;
 }
 @media (max-width: 800px) {
   .first-screen-container {

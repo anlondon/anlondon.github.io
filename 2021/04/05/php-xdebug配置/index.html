@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="技术,分享,生活">
+    <meta name="description" content="这里是anlondon,欢迎留言交流">
+    <meta name="author" content="anlondon">
+    
+    <title>
+        
+            php-xdebug配置 |
+        
+        一座浮岛
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_my.png">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo_my.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               一座浮岛
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">php-xdebug配置</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar_my.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">anlondon</span>
+                            
+                                <span class="author-label">Lv5</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2021-04-05 23:18:00</span>
+        <span class="mobile">2021-04-05 23:18</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2021-04-05 23:42:36</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/PHP/">PHP</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>来源：<a class="link"   target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018090880#articleHeader9" >PhpStorm配置Xdebug调试_司马彰的学习专栏 - SegmentFault 思否<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="安装xdebug"><a href="#安装xdebug" class="headerlink" title="安装xdebug"></a>安装xdebug</h2><p><strong>去官网下载对应版本的xdebug扩展</strong><br><a class="link"   target="_blank" rel="noopener" href="https://xdebug.org/download" >Xdebug: Downloads<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li>历史版本见Github：<a class="link"   target="_blank" rel="noopener" href="https://github.com/derickr/xdebug.org/tree/master/html/files" >xdebug.org/html/files at master · derickr/xdebug.org · GitHub<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="如何选择正确版本"><a href="#如何选择正确版本" class="headerlink" title="如何选择正确版本"></a>如何选择正确版本</h2><h4 id="1-官网下载"><a href="#1-官网下载" class="headerlink" title="1.官网下载"></a>1.官网下载</h4><ul>
+<li>输出phpinfo()函数的内容</li>
+</ul>
+<p>![一座浮岛](/2021/04/05/php-xdebug配/pasted-0<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-1.png" alt="一座浮岛">.png)</p>
+<ul>
+<li>查看输出页面的网页源码</li>
+</ul>
+<p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-2.png" alt="一座浮岛">!</p>
+<ul>
+<li>全选复制</li>
+</ul>
+<p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-3.png" alt="一座浮岛"></p>
+<ul>
+<li>到这个页面 <a class="link"   target="_blank" rel="noopener" href="https://xdebug.org/wizard" >Xdebug: Support — Tailored Installation Instructions<i class="fas fa-external-link-alt"></i></a> ,将刚才复制的内容拷贝进去,并分析</li>
+</ul>
+<p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-4.png" alt="一座浮岛"></p>
+<ul>
+<li>可以得到自己当前版本的php对应哪一个xdebug文件</li>
+</ul>
+<p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-5.png" alt="一座浮岛"></p>
+<h4 id="2-GitHub下载历史版本"><a href="#2-GitHub下载历史版本" class="headerlink" title="2.GitHub下载历史版本"></a>2.GitHub下载历史版本</h4><p>当官网没有时，我们可以去GitHub找它的历史版本<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/derickr/xdebug.org/tree/master/html/files" >xdebug.org/html/files at master · derickr/xdebug.org · GitHub<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li>输出phpinfo()函数的内容<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-6.png" alt="一座浮岛"><br>根据图中信息，php版本为5.3.29-nts-v9-x86<blockquote>
+<p>php版本对应的xdebug说明：<br>这是一个xdebug文件<code>php_xdebug-2.1.2-5.3-vc9-nts-x86_64.dll</code></p>
+<ul>
+<li><code>php_xdebug-2.1.2</code>表示是2.1.2版本的xdebug</li>
+<li><code>5.3-vc9</code>表示php是5.3.*版本，并且<code>Compiler</code> 是<code>    MSVC9 (Visual C++ 2008)</code></li>
+<li><code>nts</code>则是None-Thread Safe非线程安全，<code>Thread Safe</code>=<code>disabled </code>则是表示<code>nts</code></li>
+<li><code>x86_64</code>则是<code>Architecture</code>=<code>x86</code>!!不一定非要32位的，可以先试64位的!! </li>
+</ul>
+</blockquote>
+</li>
+<li>进入页面后按<code>CTRL+f</code>进行搜索<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-7.png" alt="一座浮岛"></li>
+</ul>
+<blockquote>
+<p>下载好的dll配置好后<strong>如果phpinfo中没有打印<code>xdebug</code>这一栏，则说明该版本不适合，需要更换版本</strong>。<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-8.png" alt="一座浮岛"><br>不然调试时就会报找不到idekey的提示！<br><strong>(waiting for incoming connection with ide kay’xxx’)</strong><br>吐槽下：如果没有耐心去试，直接搜索<code>支持php5.3-vc9-nts-x86 的xdebug</code> 说不定有惊喜</p>
+</blockquote>
+<h2 id="安装扩展"><a href="#安装扩展" class="headerlink" title="安装扩展"></a>安装扩展</h2><p>这个windows系统和Linux系统是不一样的(网上很多,不细说)</p>
+<h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h4><p>放到php ext的目录下<br>配置php.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[XDebug] </span><br><span class="line">zend_extension &#x3D; &quot;D:\你php的ext目录位置\php\ext\php_xdebug.dll&quot;</span><br><span class="line">xdebug.remote_autostart&#x3D;1 </span><br><span class="line">xdebug.remote_enable &#x3D; On</span><br><span class="line">xdebug.remote_handler &#x3D; &quot;dbgp&quot;</span><br><span class="line">xdebug.remote_host &#x3D; &quot;localhost&quot; #本地服务器</span><br><span class="line">xdebug.remote_port &#x3D; 9010        #默认为9000，防止与php-fpm冲突，改为9010</span><br><span class="line">xdebug.idekey&#x3D;&quot;PHPSTORM&quot;    #会话需要的key</span><br></pre></td></tr></table></figure>
+
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>这个很多种情况,一般就apt和yum,如果手动编译就需要.so扩展放到正确位置(phpize使用)<br><strong>配置phpStorm</strong><br><strong>先查看xdebug是否安装成功</strong><br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-9.png" alt="一座浮岛"></p>
+<h4 id="配置phpstorm"><a href="#配置phpstorm" class="headerlink" title="配置phpstorm"></a>配置phpstorm</h4><p>我是基于这个版本的<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-10.png" alt="一座浮岛"></p>
+<p>打开phpstorm配置文件<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-11.png" alt="一座浮岛"></p>
+<h5 id="设置本地的php解释器"><a href="#设置本地的php解释器" class="headerlink" title="设置本地的php解释器"></a>设置本地的php解释器</h5><p>php解释器,就是php的二进制文件，windows下的php安装路径下的php.exe，类unix系统就是bin/php文件<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-12.png" alt="一座浮岛"></p>
+<p>如果没有上述选项<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-13.png" alt="一座浮岛"></p>
+<h5 id="填写服务器端的相关信息"><a href="#填写服务器端的相关信息" class="headerlink" title="填写服务器端的相关信息"></a>填写服务器端的相关信息</h5><ul>
+<li>Host指的是服务器对应的项目的访问域名<ul>
+<li>本地nginx我用127.0.0.1</li>
+<li>用默认的80端口</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-14.png" alt="一座浮岛"></p>
+<h5 id="配置xdebug选项"><a href="#配置xdebug选项" class="headerlink" title="配置xdebug选项"></a>配置xdebug选项</h5><p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-15.png" alt="一座浮岛"></p>
+<h5 id="配置DBGp-Proxy"><a href="#配置DBGp-Proxy" class="headerlink" title="配置DBGp Proxy"></a>配置DBGp Proxy</h5><p>DBGp Proxy：多人远程调试<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-16.png" alt="一座浮岛"></p>
+<h5 id="添加一个调试配置"><a href="#添加一个调试配置" class="headerlink" title="添加一个调试配置"></a>添加一个调试配置</h5><p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-17.png" alt="一座浮岛"></p>
+<ul>
+<li>我们这里使用的是PHP Web Page,是需要依赖浏览器,额外的说明我写在本文的后记了,不是现在需要关注的重点<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-18.png" alt="一座浮岛"></li>
+</ul>
+<p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-19.png" alt="一座浮岛"></p>
+<h4 id="配置chrome"><a href="#配置chrome" class="headerlink" title="配置chrome"></a>配置chrome</h4><p><strong>安装浏览器插件</strong><br>我这里使用的是chrome浏览器,安装的是xdebug helper插件,无法使用应用商店的可以到国内镜像网站去下<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-20.png" alt="一座浮岛"></p>
+<p><strong>配置插件</strong><br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-21.png" alt="一座浮岛"></p>
+<p><strong>开始调试</strong><br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-23.png" alt="一座浮岛"></p>
+<p><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-22.png" alt="一座浮岛"></p>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>本文中,我们PhpStorm使用的是PHP Web Page,这是需要依赖浏览器,且浏览器是必须安装插件<br>另一种情况,如果我们使用PHP Remote Debug,就只需要在网址后面加上<code>?XDEBUG_SESSION_START=PHPSTORM</code>,这样可以调试了,和浏览器无关<br>两者各有优劣，使用Remote Debug的坏处在于需要加上参数,但却不依赖浏览器,有利于手机App,微信的调试</p>
+<hr>
+<p>配置总结：</p>
+<p>1、不要依靠wamp上php版本对应的xdebug版本，要按照上面描述的方法进行检测，下载匹配的xdebug版本。</p>
+<p>2、这个调试是要在浏览器里安装插件才能进行调试，并且要手动输入调试地址，直接点击下图所示调试图标无效，暂时没弄明白。<br><img src="/2021/04/05/php-xdebug%E9%85%8D/pasted-24.png" alt="一座浮岛"></p>
+<p>3、google插件下载地址：[<a class="link"   target="_blank" rel="noopener" href="http://chromecj.com/web-development/2018-04/980/download.html]" >http://chromecj.com/web-development/2018-04/980/download.html]<i class="fas fa-external-link-alt"></i></a></p>
+
+            </div>
+
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2021/04/06/PHP-has-encountered-an-Access-Violation-at-0416B2AF/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">PHP has encountered an Access Violation</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2021/04/05/npm-%E6%89%93%E5%8C%85%E9%A1%B9%E7%9B%AE/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">npm 打包项目</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">anlondon</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    蜀ICP备2021002582号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

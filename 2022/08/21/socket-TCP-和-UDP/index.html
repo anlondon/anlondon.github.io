@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="技术,分享,生活">
+    <meta name="description" content="这里是anlondon,欢迎留言交流">
+    <meta name="author" content="anlondon">
+    
+    <title>
+        
+            socket　TCP 和 UDP |
+        
+        一座浮岛
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_my.png">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo_my.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               一座浮岛
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">socket　TCP 和 UDP</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar_my.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">anlondon</span>
+                            
+                                <span class="author-label">Lv5</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-08-21 11:05:00</span>
+        <span class="mobile">2022-08-21 11:05</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2022-08-21 11:23:11</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="简单概述"><a href="#简单概述" class="headerlink" title="简单概述"></a>简单概述</h2><ol>
+<li><p>在互联网中，不同地区的计算机/设备通过Internet相互联系，但是因为习惯和语言的不同，容易造成双方不能直接沟通，因此加入了一系列协议，规定什么样的通信使用什么样的协议，这些协议称为<strong>互联网协议(Internet Protocol Suite)，互联网的本质就是一系列协议</strong>；TCP协议和UDP协议就是众多协议中的一部分。  </p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15041569/article/details/90731038" >网络通信原理_网络_梦心之魂的博客-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<ul>
+<li>如两个人打电话，双方说着不同的方言，为了沟通顺畅，可以一起使用<strong>同一标准</strong>的普通话。</li>
+<li>而当广西的A想给某国的C打电话时，双方语言不同，就得依靠翻译，增加了沟通成本。如果大家都能使用同一种语言(标准)，这样沟通就方便多了。</li>
+<li>因此就诞生了互联网协议，这些协议定义计算机如何接入internet，以及接入internet的计算机通信的标准。<br/></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<ol start="2">
+<li><p>网络编程</p>
+<ul>
+<li>网络编程就是Socket编程</li>
+<li>socket编程： 二进制 + IP + 端口通讯的一种模式</li>
+<li>在任何语言中都有socket编程，因此几乎所有的语言的socket都可以互通；如C可以和PHP、JAVA使用socket通讯<br/></li>
+</ul>
+</li>
+<li><p>网络模型分层</p>
+<ul>
+<li><p>简单的tcp/ip四层</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td>HTTP协议</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP协议</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP协议</td>
+</tr>
+<tr>
+<td>链路层</td>
+<td>以太网协议</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>详细介绍：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15041569/article/details/90731038" >网络通信原理_网络_梦心之魂的博客-CSDN博客<i class="fas fa-external-link-alt"></i></a><br>互联网协议按照功能不同分为osi七层或tcp/ip五层或tcp/ip四层</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2022/08/21/socket_TCP%E5%92%8CUDP/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAzNjg1Ny8yMDE2MTAvMTAzNjg1Ny0yMDE2MTAwODE0NTU0NDQyNi03MzY0MzkxMzIucG5n.png"><br>      每层运行常见物理设备</p>
+<p><img src="/2022/08/21/socket_TCP%E5%92%8CUDP/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAzNjg1Ny8yMDE2MTAvMTAzNjg1Ny0yMDE2MTAwODE0NDkyNTI1NC0xMzk4NTA3NDkzLnBuZw.png"></p>
+<p>4.区分客户端和服务器端<br>    - 谁发起请求，谁就是客户端(client)<br>    - 谁接受请求，谁就是服务器端(server)</p>
+<h2 id="简单概述TCP、UDP"><a href="#简单概述TCP、UDP" class="headerlink" title="简单概述TCP、UDP"></a>简单概述TCP、UDP</h2><ul>
+<li><p>TCP </p>
+<ul>
+<li>点对点的建立链接</li>
+<li>如同两个人写信，你需要知道对方的具体地址(ip)还需要知道对方的姓名(port)<a href="%E6%8C%87%E7%AB%AF%E5%8F%A3%EF%BC%8C%E5%BA%94%E7%94%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%B0%B1%E5%A6%82%E5%90%8C%E5%BA%94%E7%94%A8%E7%9A%84%E9%97%A8%E7%89%8C%E5%8F%B7%EF%BC%8C%E6%8A%8A%E7%94%B5%E8%84%91%E7%9C%8B%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8C%BA%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8C%BA%E5%8F%AF%E4%BB%A5%E6%9C%89%E5%BE%88%E5%A4%9A%E4%BD%8F%E6%88%B7%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89%EF%BC%8CIP%E8%83%BD%E5%AE%9A%E4%BD%8D%E5%88%B0%E5%85%B7%E4%BD%93%E7%9A%84%E5%B0%8F%E5%8C%BA%EF%BC%8C%E4%B8%BA%E4%BA%86%E5%8C%BA%E5%88%86%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BD%8F%E6%88%B7%EF%BC%8C%E5%B0%B1%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3(%E9%97%A8%E7%89%8C%E5%8F%B7)%E6%9D%A5%E5%8C%BA%E5%88%86%E3%80%82%E5%BA%94%E7%94%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%8F%AF%E4%BB%A5%E4%BF%AE%E6%94%B9">^port</a></li>
+</ul>
+</li>
+<li><p>UDP</p>
+<ul>
+<li>一对多单向广播，一次最多64K</li>
+<li>如同学校广播通知，内容需要简短易懂（64k），接收信息的人特别多（一对多单向广播），不是所有人都能听到以及感兴趣</li>
+</ul>
+</li>
+</ul>
+<p>总结两者区别：UDP面向无链接，不管有没有接收方，都会发出去，但是发送的数据最多只有64kb，这种方式很有效率但是不够安全。而TCP协议则规定了数据传输时要三次握手四次分手的过程，是比较安全的，是点对点面向有链接的。<br>因此在做有链接的数据通讯编程时，TCP是首选，而不那么看中安全性以及面向无链接时，则可以选用UDP。<br><br/><br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/Qing-840/p/9283367.html" >简述TCP的三次握手过程 - 清风木 - 博客园<i class="fas fa-external-link-alt"></i></a></p>
+<table>
+<thead>
+<tr>
+<th>总览图</th>
+<th><img src="/2022/08/21/socket_TCP%E5%92%8CUDP/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAzNjg1Ny8yMDE2MTAvMTAzNjg1Ny0yMDE2MTAwODE4NTY0ODE2MC0xOTExODk2OTAucG5n.png"></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TCP三次握手</td>
+<td><img src="/2022/08/21/socket_TCP%E5%92%8CUDP/924c19c3.png" alt="a1c1e927.png"></td>
+<td><img src="/2022/08/21/socket_TCP%E5%92%8CUDP/77547778.png" alt="7ed12883.png"></td>
+</tr>
+<tr>
+<td>TCP四次挥手</td>
+<td><img src="/2022/08/21/socket_TCP%E5%92%8CUDP/96bfa0c5.png" alt="96bfa0c5.png"></td>
+<td><img src="/2022/08/21/socket_TCP%E5%92%8CUDP/5707113a.png" alt="5707113a.png"></td>
+</tr>
+<tr>
+<td>SYN：同步序列编号(Synchronize Sequence Numbers)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="TCP-和-UDP-的优缺点"><a href="#TCP-和-UDP-的优缺点" class="headerlink" title="TCP 和 UDP 的优缺点"></a>TCP 和 UDP 的优缺点</h2><table>
+<thead>
+<tr>
+<th>协议</th>
+<th>特点</th>
+<th>优点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TCP</td>
+<td>点对点，面向链接</td>
+<td>安全性高</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>一对多，面向无链接</td>
+<td>效率高</td>
+</tr>
+</tbody></table>
+<hr>
+<p>  注释</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">#网络协议</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/08/21/%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%B7%E6%96%B0%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88%E5%9B%BE%E7%89%87src%E9%87%8D%E6%96%B0%E8%B5%8B%E5%80%BC%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">火狐浏览器图形验证码刷新不生效的问题（图片src重新赋值不生效的问题）</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/08/21/%E7%9D%A1%E7%9C%A0-%E6%84%8F%E5%BF%97%E5%8A%9B/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">睡眠&amp;意志力</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">anlondon</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    蜀ICP备2021002582号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

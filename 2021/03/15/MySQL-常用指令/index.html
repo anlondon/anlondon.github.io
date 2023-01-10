@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="技术,分享,生活">
+    <meta name="description" content="这里是anlondon,欢迎留言交流">
+    <meta name="author" content="anlondon">
+    
+    <title>
+        
+            MySQL 常用指令 |
+        
+        一座浮岛
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_my.png">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo_my.png","favicon":"/images/logo_my.png","avatar":"/images/avatar_my.svg","font_size":null,"font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://api.likepoems.com/img/aliyun/pc","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo_my.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               一座浮岛
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MySQL 常用指令</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar_my.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">anlondon</span>
+                            
+                                <span class="author-label">Lv5</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2021-03-15 12:42:00</span>
+        <span class="mobile">2021-03-15 12:42</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2022-02-11 22:50:21</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/MySql/">MySql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/MySql/">MySql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p>来源： <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/bluealine/p/7832219.html" >Mysql常用命令行大全|cnblogs<i class="fas fa-external-link-alt"></i></a><br>作者： <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/bluealine/" >淡淡的幸福<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h4 id="1、连接Mysql"><a href="#1、连接Mysql" class="headerlink" title="1、连接Mysql"></a>1、连接Mysql</h4><p>格式：<code> mysql -h主机地址 -u用户名 －p用户密码</code></p>
+<ol>
+<li><p>连接到本机上的MYSQL。<br>首先打开DOS窗口，然后进入目录mysql\bin，再键入命令<code>mysql -u root -p</code>，回车后提示你输密码.注意用户名前可以有空格也可以没有空格，但是密码前必须没有空格，否则让你重新输入密码。</p>
+<p>如果刚安装好MYSQL，超级用户root是没有密码的，故直接回车即可进入到MYSQL中了，MYSQL的提示符是：<code>mysql&gt;</code></p>
+</li>
+<li><p>连接到远程主机上的MYSQL。假设远程主机的IP为：110.110.110.110，用户名为root,密码为abcd123。则键入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h110.110.110.110 -u root -p 123;（注:u与root之间可以不用加空格，其它也一样）</span><br></pre></td></tr></table></figure></li>
+<li><p>退出MYSQL命令： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;exit （回车）</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="2、修改密码"><a href="#2、修改密码" class="headerlink" title="2、修改密码"></a>2、修改密码</h4><p>格式：<code>mysqladmin -u用户名 -p旧密码 password 新密码</code></p>
+<ol>
+<li><p>给root加个密码ab12。<br>首先在DOS下进入目录mysql\bin，然后键入以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -password ab12</span><br></pre></td></tr></table></figure>
+<p>注：因为开始时root没有密码，所以-p旧密码一项就可以省略了。</p>
+</li>
+<li><p>再将root的密码改为djg345。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -p ab12 password djg345</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="3、增加新用户"><a href="#3、增加新用户" class="headerlink" title="3、增加新用户"></a>3、增加新用户</h4><blockquote>
+<p>注意：和上面不同，下面的因为是MYSQL环境中的命令，所以后面都带一个分号作为命令结束符</p>
+</blockquote>
+<p>格式：<code>grant select on 数据库.* to 用户名@登录主机 identified by “密码”</code></p>
+<ol>
+<li><p>增加一个用户test1密码为abc，让他可以在任何主机上登录，并对所有数据库有查询、插入、修改、删除的权限。首先用root用户连入MYSQL，然后键入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant select,insert,update,delete on *.* to [email&#x3D;test1@”%]test1@”%[&#x2F;email]” Identified by “abc”;</span><br></pre></td></tr></table></figure>
+<p>但增加的用户是十分危险的，你想如某个人知道test1的密码，那么他就可以在internet上的任何一台电脑上登录你的mysql数据库并对你的数据可以为所欲为了，解决办法见2。</p>
+</li>
+<li><p>增加一个用户test2密码为abc,让他只可以在localhost上登录，并可以对数据库mydb进行查询、插入、修改、删除的操作（localhost指本地主机，即MYSQL数据库所在的那台主机），这样用户即使用知道test2的密码，他也无法从internet上直接访问数据库，只能通过MYSQL主机上的web页来访问了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant select,insert,update,delete on mydb.* to [email&#x3D;test2@localhost]test2@localhost[&#x2F;email] identified by “abc”;</span><br></pre></td></tr></table></figure>
+<p>如果你不想test2有密码，可以再打一个命令将密码消掉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant select,insert,update,delete on mydb.* to [email&#x3D;test2@localhost]test2@localhost[&#x2F;email] identified by “”;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="4-1-创建数据库"><a href="#4-1-创建数据库" class="headerlink" title="4.1 创建数据库"></a>4.1 创建数据库</h4><blockquote>
+<p>注意：创建数据库之前要先连接Mysql服务器</p>
+</blockquote>
+<p>命令：<code>create database &lt;数据库名&gt;</code></p>
+<p>例1：建立一个名为xhkdb的数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database xhkdb;</span><br></pre></td></tr></table></figure>
+
+<p>例2：创建数据库并分配用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE 数据库名;</span><br><span class="line"></span><br><span class="line">mysql&gt; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON 数据库名.* TO 数据库名@localhost IDENTIFIED BY &#39;密码&#39;;</span><br><span class="line"></span><br><span class="line">mysql&gt; SET PASSWORD FOR &#39;数据库名&#39;@&#39;localhost&#39; &#x3D; OLD_PASSWORD(&#39;密码&#39;);</span><br></pre></td></tr></table></figure>
+<p>依次执行3个命令完成数据库创建。注意：中文 “密码”和“数据库”是户自己需要设置的。</p>
+<h4 id="4-2-显示数据库"><a href="#4-2-显示数据库" class="headerlink" title="4.2 显示数据库"></a>4.2 显示数据库</h4><p>命令：<code>show databases</code> （注意：最后有个s）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show databases;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：为了不再显示的时候乱码，要修改数据库默认编码。以下以GBK编码页面为例进行说明：</p>
+</blockquote>
+<p>1、修改MYSQL的配置文件：my.ini里面修改<code>default-character-set=gbk</code><br>2、代码运行时修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">①Java代码：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test?useUnicode&#x3D;true&amp;characterEncoding&#x3D;gbk</span><br><span class="line">②PHP代码：header(&quot;Content-Type:text&#x2F;html;charset&#x3D;gb2312&quot;);</span><br><span class="line">③C语言代码：int mysql_set_character_set( MYSQL * mysql, char * csname)；</span><br></pre></td></tr></table></figure>
+<p>该函数用于为当前连接设置默认的字符集。字符串csname指定了1个有效的字符集名称。连接校对成为字符集的默认校对。该函数的工作方式与SET NAMES语句类似，但它还能设置<code>mysql-&gt;charset</code>的值，从而影响了由<code>mysql_real_escape_string()</code>设置的字符集。</p>
+<h4 id="4-3-删除数据库"><a href="#4-3-删除数据库" class="headerlink" title="4.3 删除数据库"></a>4.3 删除数据库</h4><p>命令：<code>drop database &lt;数据库名&gt;</code><br>例如：删除名为 xhkdb的数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database xhkdb;</span><br></pre></td></tr></table></figure>
+
+<p>例子1：删除一个已经确定存在的数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database drop_database;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>例子2：删除一个不确定存在的数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database drop_database;</span><br><span class="line">ERROR 1008 (HY000): Can&#39;t drop database &#39;drop_database&#39;; database doesn&#39;t exist</span><br><span class="line">   &#x2F;&#x2F;发生错误，不能删除&#39;drop_database&#39;数据库，该数据库不存在。</span><br><span class="line">mysql&gt; drop database if exists drop_database;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)&#x2F;&#x2F;产生一个警告说明此数据库不存在</span><br><span class="line">mysql&gt; create database drop_database;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">mysql&gt; drop database if exists drop_database;&#x2F;&#x2F;if exists 判断数据库是否存在，不存在也不产生错误</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-连接数据库"><a href="#4-4-连接数据库" class="headerlink" title="4.4 连接数据库"></a>4.4 连接数据库</h4><p>命令： <code>use &lt;数据库名&gt;</code></p>
+<p>例如：如果xhkdb数据库存在，尝试存取它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use xhkdb;</span><br><span class="line">屏幕提示：Database changed</span><br></pre></td></tr></table></figure>
+
+<p>use 语句可以通告MySQL把db_name数据库作为默认（当前）数据库使用，用于后续语句。该数据库保持为默认数据库，直到语段的结尾，或者直到发布一个不同的USE语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE db1;</span><br><span class="line">mysql&gt; SELECT COUNT(*) FROM mytable;   # selects from db1.mytable</span><br><span class="line">mysql&gt; USE db2;</span><br><span class="line">mysql&gt; SELECT COUNT(*) FROM mytable;   # selects from db2.mytable</span><br></pre></td></tr></table></figure>
+<p>使用USE语句为一个特定的当前的数据库做标记，不会阻碍您访问其它数据库中的表。下面的例子可以从db1数据库访问作者表，并从db2数据库访问编辑表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE db1;</span><br><span class="line">mysql&gt; SELECT author_name,editor_name FROM author,db2.editor</span><br><span class="line">    -&gt;        WHERE author.editor_id &#x3D; db2.editor.editor_id;</span><br></pre></td></tr></table></figure>
+<p>USE语句被设立出来，用于与Sybase相兼容。</p>
+<p>有些网友问到，连接以后怎么退出。其实，不用退出来，<code>use</code>数据库后，使用<code>show databases</code>就能查询所有数据库，如果想跳到其他数据库，用<code>use 其他数据库名字</code>就可以了。</p>
+<h4 id="4-5-当前选择的数据库"><a href="#4-5-当前选择的数据库" class="headerlink" title="4.5 当前选择的数据库"></a>4.5 当前选择的数据库</h4><p>命令：<code>mysql&gt; select database();</code></p>
+<p>MySQL中<code>SELECT</code>命令类似于其他编程语言里的<code>print</code>或者<code>write</code>，你可以用它来显示一个字符串、数字、数学表达式的结果等等。如何使用MySQL中<code>SELECT</code>命令的特殊功能？</p>
+<ol>
+<li><p>显示MYSQL的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select version(); </span><br><span class="line">+-----------------------+ </span><br><span class="line">| version()             | </span><br><span class="line">+-----------------------+ </span><br><span class="line">| 6.0.4-alpha-community | </span><br><span class="line">+-----------------------+ </span><br><span class="line">1 row in set (0.02 sec) </span><br></pre></td></tr></table></figure></li>
+<li><p>显示当前时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select now(); </span><br><span class="line">+---------------------+ </span><br><span class="line">| now()               | </span><br><span class="line">+---------------------+ </span><br><span class="line">| 2009-09-15 22:35:32 | </span><br><span class="line">+---------------------+ </span><br><span class="line">1 row in set (0.04 sec) </span><br></pre></td></tr></table></figure></li>
+<li><p>显示年月日</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">SELECT DAYOFMONTH(CURRENT_DATE); </span><br><span class="line">+--------------------------+ </span><br><span class="line">| DAYOFMONTH(CURRENT_DATE) | </span><br><span class="line">+--------------------------+ </span><br><span class="line">|                       15 | </span><br><span class="line">+--------------------------+ </span><br><span class="line">1 row in set (0.01 sec) </span><br><span class="line"></span><br><span class="line">SELECT MONTH(CURRENT_DATE); </span><br><span class="line">+---------------------+ </span><br><span class="line">| MONTH(CURRENT_DATE) | </span><br><span class="line">+---------------------+ </span><br><span class="line">|                   9 | </span><br><span class="line">+---------------------+ </span><br><span class="line">1 row in set (0.00 sec) </span><br><span class="line"></span><br><span class="line">SELECT YEAR(CURRENT_DATE); </span><br><span class="line">+--------------------+ </span><br><span class="line">| YEAR(CURRENT_DATE) | </span><br><span class="line">+--------------------+ </span><br><span class="line">|               2009 | </span><br><span class="line">+--------------------+ </span><br><span class="line">1 row in set (0.00 sec) </span><br></pre></td></tr></table></figure></li>
+<li><p>显示字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT &quot;welecome to my blog!&quot;; </span><br><span class="line">+----------------------+ </span><br><span class="line">| welecome to my blog! | </span><br><span class="line">+----------------------+ </span><br><span class="line">| welecome to my blog! | </span><br><span class="line">+----------------------+ </span><br><span class="line">1 row in set (0.00 sec) </span><br></pre></td></tr></table></figure></li>
+<li><p>当计算器用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select ((4 * 4) &#x2F; 10 ) + 25; </span><br><span class="line">+----------------------+ </span><br><span class="line">| ((4 * 4) &#x2F; 10 ) + 25 | </span><br><span class="line">+----------------------+ </span><br><span class="line">|                26.60 | </span><br><span class="line">+----------------------+ </span><br><span class="line">1 row in set (0.00 sec) </span><br></pre></td></tr></table></figure></li>
+<li><p>串接字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select CONCAT(f_name, &quot; &quot;, l_name) </span><br><span class="line">AS Name </span><br><span class="line">from employee_data </span><br><span class="line">where title &#x3D; &#39;Marketing Executive&#39;; </span><br><span class="line">+---------------+ </span><br><span class="line">| Name          | </span><br><span class="line">+---------------+ </span><br><span class="line">| Monica Sehgal | </span><br><span class="line">| Hal Simlai    | </span><br><span class="line">| Joseph Irvine | </span><br><span class="line">+---------------+ </span><br><span class="line">3 rows in set (0.00 sec) </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：这里用到CONCAT()函数，用来把字符串串接起来。另外，我们还用到以前学到的AS给结果列’CONCAT(f_name, “ “, l_name)’起了个假名。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="5-1-创建数据表"><a href="#5-1-创建数据表" class="headerlink" title="5.1 创建数据表"></a>5.1 创建数据表</h4><p>命令：<code>create table &lt;表名&gt; ( &lt;字段名1&gt; &lt;类型1&gt; [,..&lt;字段名n&gt; &lt;类型n&gt;]);</code></p>
+<p>例如，建立一个名为MyClass的表，</p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">数字类型</th>
+<th align="center">数据宽度</th>
+<th align="center">是否为空</th>
+<th align="center">是否主键</th>
+<th align="center">自动增加</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">id</td>
+<td align="center">int</td>
+<td align="center">4</td>
+<td align="center">否</td>
+<td align="center">primary key</td>
+<td align="center">auto_increment</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">name</td>
+<td align="center">char</td>
+<td align="center">20</td>
+<td align="center">否</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sex</td>
+<td align="center">int</td>
+<td align="center">4</td>
+<td align="center">否</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">degree</td>
+<td align="center">double</td>
+<td align="center">16</td>
+<td align="center">是</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table MyClass(</span><br><span class="line">&gt; id int(4) not null primary key auto_increment,</span><br><span class="line">&gt; name char(20) not null,</span><br><span class="line">&gt; sex int(4) not null default &#39;0&#39;,</span><br><span class="line">&gt; degree double(16,2));</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-删除数据表"><a href="#5-3-删除数据表" class="headerlink" title="5.3 删除数据表"></a>5.3 删除数据表</h4><p>命令：<code>drop table &lt;表名&gt;</code></p>
+<p>例如：删除表名为 MyClass 的表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop table MyClass;</span><br></pre></td></tr></table></figure>
+
+<p><code>DROP TABLE</code>用于取消一个或多个表。您必须有每个表的<code>DROP</code>权限。所有的表数据和表定义会被取消，所以使用本语句要小心！</p>
+<p>注意：对于一个带分区的表，<code>DROP TABLE</code>会永久性地取消表定义，取消各分区，并取消储存在这些分区中的所有数据。<code>DROP TABLE</code>还会取消与被取消的表有关联的分区定义（.par）文件。</p>
+<p>对与不存在的表，使用<code>IF EXISTS</code>用于防止错误发生。当使用<code>IF EXISTS</code>时，对于每个不存在的表，会生成一个<code>NOTE</code>。</p>
+<p><code>ESTRICT</code>和<code>CASCADE</code>可以使分区更容易。目前，<code>RESTRICT</code>和<code>CASCADE</code>不起作用。</p>
+<h4 id="5-4-表插入数据"><a href="#5-4-表插入数据" class="headerlink" title="5.4 表插入数据"></a>5.4 表插入数据</h4><p>命令：<code>insert into &lt;表名&gt; [( &lt;字段名1&gt;[,..&lt;字段名n &gt; ])] values ( 值1 )[, ( 值n )]</code></p>
+<p>例如：往表 MyClass中插入二条记录, 这二条记录表示：编号为1的名为Tom的成绩为96.45, 编号为2 的名为Joan 的成绩为82.99， 编号为3 的名为Wang 的成绩为96.5。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; insert into MyClass values(1,&#39;Tom&#39;,96.45),(2,&#39;Joan&#39;,82.99), (2,&#39;Wang&#39;, 96.59);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：insert into每次只能向表中插入一条记录。</p>
+</blockquote>
+<h4 id="5-5-查询表中的数据"><a href="#5-5-查询表中的数据" class="headerlink" title="5.5 查询表中的数据"></a>5.5 查询表中的数据</h4><ol>
+<li><p>查询所有行<br>命令： <code>select &lt;字段1，字段2，...&gt; from &lt; 表名 &gt; where &lt; 表达式 &gt;</code><br>例如：查看表 MyClass 中所有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from MyClass;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询前几行数据<br>例如：查看表 MyClass 中前2行数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from MyClass order by id limit 0,2;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><code>select</code>一般配合<code>where</code>使用，以查询更精确更复杂的数据。</p>
+<h4 id="5-6-删除表中数据"><a href="#5-6-删除表中数据" class="headerlink" title="5.6 删除表中数据"></a>5.6 删除表中数据</h4><p>命令：<code>delete from 表名 where 表达式</code></p>
+<p>例如：删除表 MyClass中编号为1 的记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delete from MyClass where id&#x3D;1;</span><br></pre></td></tr></table></figure>
+
+<p>下面是一个删除数据前后表的对比。</p>
+<table>
+<thead>
+<tr>
+<th align="center">FirstName</th>
+<th align="center">LastName</th>
+<th align="center">Age</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Peter</td>
+<td align="center">Griffin</td>
+<td align="center">35</td>
+</tr>
+<tr>
+<td align="center">Glenn</td>
+<td align="center">Quagmire</td>
+<td align="center">33</td>
+</tr>
+</tbody></table>
+<p>下面以PHP代码为例删除 “Persons” 表中所有 LastName=’Griffin’ 的记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">   $con &#x3D; mysql_connect(&quot;localhost&quot;,&quot;peter&quot;,&quot;abc123&quot;); </span><br><span class="line">   if (!$con) </span><br><span class="line">   &#123;</span><br><span class="line">      die(&#39;Could not connect: &#39; . mysql_error()); </span><br><span class="line">   &#125; </span><br><span class="line">   mysql_select_db(&quot;my_db&quot;, $con); </span><br><span class="line">   mysql_query(&quot;DELETE FROM Persons WHERE LastName&#x3D;&#39;Griffin&#39;&quot;); mysql_close($con); </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>在这次删除之后，表是这样的：<br>|FirstName|LastName|Age|<br>|:—-:|:—-:|:—-:|<br>|Glenn|Quagmire|33|</p>
+<h4 id="5-7-修改表中数据"><a href="#5-7-修改表中数据" class="headerlink" title="5.7 修改表中数据"></a>5.7 修改表中数据</h4><p>语法：<code>update 表名 set 字段=新值,… where 条件</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update MyClass set name&#x3D;&#39;Mary&#39; where id&#x3D;1;</span><br></pre></td></tr></table></figure>
+
+<p>例子1：单表的MySQL UPDATE语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE [LOW_PRIORITY] [IGNORE] tbl_name SET col_name1&#x3D;expr1 [, col_name2&#x3D;expr2 ...] [WHERE where_definition] [ORDER BY ...] [LIMIT row_count]</span><br></pre></td></tr></table></figure>
+
+<p>例子2：多表的UPDATE语句：<br><code>UPDATE [LOW_PRIORITY] [IGNORE] table_references SET col_name1=expr1 [, col_name2=expr2 ...] [WHERE where_definition]</code></p>
+<p><code>UPDATE</code>语法可以用新值更新原有表行中的各列。SET子句指示要修改哪些列和要给予哪些值。<code>WHERE</code>子句指定应更新哪些行。如果没有<code>WHERE</code>子句，则更新所有的行。如果指定了<code>ORDER BY</code>子句，则按照被指定的顺序对行进行更新。<code>LIMIT</code>子句用于给定一个限值，限制可以被更新的行的数目。</p>
+<h4 id="5-8-增加字段"><a href="#5-8-增加字段" class="headerlink" title="5.8 增加字段"></a>5.8 增加字段</h4><p>命令：<code>alter table 表名 add字段 类型 其他;</code><br>例如：在表MyClass中添加了一个字段passtest，类型为int(4)，默认值为0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter table MyClass add passtest int(4) default &#39;0&#39;</span><br></pre></td></tr></table></figure>
+
+<h6 id="加索引"><a href="#加索引" class="headerlink" title="加索引"></a>加索引</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter table 表名 add index 索引名 (字段名1[，字段名2 …]);</span><br></pre></td></tr></table></figure>
+<p>例子：<code> mysql&gt; alter table employee add index emp_name (name);</code></p>
+<h6 id="加主关键字的索引"><a href="#加主关键字的索引" class="headerlink" title="加主关键字的索引"></a>加主关键字的索引</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  mysql&gt; alter table 表名 add primary key (字段名);</span><br><span class="line">例子： mysql&gt; alter table employee add primary key(id);</span><br></pre></td></tr></table></figure>
+
+<h6 id="加唯一限制条件的索引"><a href="#加唯一限制条件的索引" class="headerlink" title="加唯一限制条件的索引"></a>加唯一限制条件的索引</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   mysql&gt; alter table 表名 add unique 索引名 (字段名);</span><br><span class="line">例子： mysql&gt; alter table employee add unique emp_name2(cardnumber);</span><br></pre></td></tr></table></figure>
+
+<h6 id="删除某个索引"><a href="#删除某个索引" class="headerlink" title="删除某个索引"></a>删除某个索引</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   mysql&gt; alter table 表名 drop index 索引名;</span><br><span class="line">例子： mysql&gt;alter table employee drop index emp_name;</span><br></pre></td></tr></table></figure>
+
+<h6 id="增加字段："><a href="#增加字段：" class="headerlink" title="增加字段："></a>增加字段：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE table_name ADD field_name field_type;</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改原字段名称及类型："><a href="#修改原字段名称及类型：" class="headerlink" title="修改原字段名称及类型："></a>修改原字段名称及类型：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE table_name CHANGE old_field_name new_field_name field_type;</span><br></pre></td></tr></table></figure>
+
+<h6 id="删除字段："><a href="#删除字段：" class="headerlink" title="删除字段："></a>删除字段：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MySQL&gt; ALTER TABLE table_name DROP field_name;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-9-修改表名"><a href="#5-9-修改表名" class="headerlink" title="5.9 修改表名"></a>5.9 修改表名</h4><p>命令：<code>rename table 原表名 to 新表名;</code></p>
+<p>例如：在表MyClass名字更改为YouClass</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; rename table MyClass to YouClass;</span><br></pre></td></tr></table></figure>
+
+<p>当你执行<code>RENAME</code>时，你不能有任何锁定的表或活动的事务。你同样也必须有对原初表的<code>ALTER</code>和<code>DROP</code>权限，以及对新表的<code>CREATE</code>和<code>INSERT</code>权限。</p>
+<p>如果在多表更名中，MySQL 遭遇到任何错误，它将对所有被更名的表进行倒退更名，将每件事物退回到最初状态。</p>
+<blockquote>
+<p>RENAME TABLE 在 MySQL 3.23.23 中被加入。</p>
+</blockquote>
+<h4 id="6、备份数据库"><a href="#6、备份数据库" class="headerlink" title="6、备份数据库"></a>6、备份数据库</h4><blockquote>
+<p>命令在DOS的[url=file://\mysql\bin]\mysql\bin[/url]目录下执行</p>
+</blockquote>
+<ol>
+<li><p>导出整个数据库<br>导出文件默认是存在mysql\bin目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名</span><br><span class="line">mysqldump -u user_name -p123456 database_name &gt; outfile_name.sql</span><br></pre></td></tr></table></figure></li>
+<li><p>导出一个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u 用户名 -p 数据库名 表名&gt; 导出的文件名</span><br><span class="line">mysqldump -u user_name -p database_name table_name &gt; outfile_name.sql</span><br></pre></td></tr></table></figure></li>
+<li><p>导出一个数据库结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u user_name -p -d –add-drop-table database_name &gt; outfile_name.sql</span><br><span class="line">-d 没有数据 –add-drop-table 在每个create语句之前增加一个drop table</span><br></pre></td></tr></table></figure></li>
+<li><p>带语言参数导出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -p –default-character-set&#x3D;latin1 –set-charset&#x3D;gbk –skip-opt database_name &gt; outfile_name.sql</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>  例如，将aaa库备份到文件back_aaa中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　[root@test1 root]# cd　&#x2F;home&#x2F;data&#x2F;mysql</span><br><span class="line">　　[root@test1 mysql]# mysqldump -u root -p --opt aaa &gt; back_aaa</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-1-一个建库和建表的实例1"><a href="#7-1-一个建库和建表的实例1" class="headerlink" title="7.1 一个建库和建表的实例1"></a>7.1 一个建库和建表的实例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">drop database if exists school; &#x2F;&#x2F;如果存在SCHOOL则删除</span><br><span class="line">create database school; &#x2F;&#x2F;建立库SCHOOL</span><br><span class="line">use school; &#x2F;&#x2F;打开库SCHOOL</span><br><span class="line">create table teacher &#x2F;&#x2F;建立表TEACHER</span><br><span class="line">(</span><br><span class="line">    id int(3) auto_increment not null primary key,</span><br><span class="line">    name char(10) not null,</span><br><span class="line">    address varchar(50) default ‘深圳’,</span><br><span class="line">    year date</span><br><span class="line">); &#x2F;&#x2F;建表结束</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下为插入字段</span><br><span class="line">insert into teacher values(”,’allen’,&#39;大连一中’,&#39;1976-10-10′);</span><br><span class="line">insert into teacher values(”,’jack’,&#39;大连二中’,&#39;1975-12-23′);</span><br></pre></td></tr></table></figure>
+
+<p>如果你在mysql提示符键入上面的命令也可以，但不方便调试。</p>
+<ol>
+<li><p>你可以将以上命令原样写入一个文本文件中，假设为school.sql，然后复制到c:\下，并在DOS状态进入目录<code>[url=file://\\mysql\\bin]\\mysql\\bin[/url]</code>，然后键入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p密码 &lt; c:\\school.sql</span><br></pre></td></tr></table></figure>
+<p>如果成功，空出一行无任何显示；如有错误，会有提示。（以上命令已经调试，你只要将//的注释去掉即可使用）。</p>
+</li>
+<li><p>或者进入命令行后使用 <code>mysql&gt; source c:\\school.sql; 也可以将school.sql文件导入数据库中。</code></p>
+</li>
+</ol>
+<h4 id="7-2-一个建库和建表的实例2"><a href="#7-2-一个建库和建表的实例2" class="headerlink" title="7.2 一个建库和建表的实例2"></a>7.2 一个建库和建表的实例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">drop database if exists school; &#x2F;&#x2F;如果存在SCHOOL则删除</span><br><span class="line">create database school; &#x2F;&#x2F;建立库SCHOOL</span><br><span class="line">use school; &#x2F;&#x2F;打开库SCHOOL</span><br><span class="line">create table teacher &#x2F;&#x2F;建立表TEACHER</span><br><span class="line">(</span><br><span class="line">    id int(3) auto_increment not null primary key,</span><br><span class="line">    name char(10) not null,</span><br><span class="line">    address varchar(50) default &#39;&#39;深圳&#39;&#39;,</span><br><span class="line">    year date</span><br><span class="line">); &#x2F;&#x2F;建表结束</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下为插入字段</span><br><span class="line">insert into teacher values(&#39;&#39;&#39;&#39;,&#39;&#39;glchengang&#39;&#39;,&#39;&#39;深圳一中&#39;&#39;,&#39;&#39;1976-10-10&#39;&#39;);</span><br><span class="line">insert into teacher values(&#39;&#39;&#39;&#39;,&#39;&#39;jack&#39;&#39;,&#39;&#39;深圳一中&#39;&#39;,&#39;&#39;1975-12-23&#39;&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>注：在建表中</p>
+<ol>
+<li><p>将ID设为长度为3的数字字段:<code>int(3)</code>；并让它每个记录自动加一:<code>auto_increment</code>；并不能为空:<code>not null</code>；而且让他成为主字段<code>primary key</code>。</p>
+</li>
+<li><p>将NAME设为长度为10的字符字段</p>
+</li>
+<li><p>将ADDRESS设为长度50的字符字段，而且缺省值为深圳。</p>
+</li>
+<li><p>将YEAR设为日期字段。</p>
+</li>
+</ol>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MySql/">#MySql</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2021/03/15/Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5%EF%BC%886%E7%A7%8D%EF%BC%89/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Nginx负载均衡策略</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2021/03/12/php%E4%B8%8Ejs%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">php与js时间戳相互转换</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">anlondon</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    蜀ICP备2021002582号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

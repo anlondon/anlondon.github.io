@@ -2679,7 +2679,7 @@ pre .javascript .function {
   text-align: center;
   background-color: rgba(0,0,0,0.588);
   border-radius: 5px;
-  color: #fff false;
+  color: #fff !important;
 }
 .first-screen-container .content .description .desc-item {
   color: var(--text-color-3);

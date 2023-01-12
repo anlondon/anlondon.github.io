@@ -1,8 +1,6 @@
-.home-content-container {
-  background: var(--background-color-1);
-}
 .home-content-container .home-article-list .home-article-item {
   position: relative;
+  background: var(--header-transparent-background-2);
 }
 .home-content-container .home-article-list .home-article-item .top-icon {
   position: absolute;

@@ -561,3 +561,10 @@ button {
   display: block;
   max-height: 10rem;
 }
+.background-my {
+  background: url("$first-screen-img") center center/cover no-repeat;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  position: fixed;
+}

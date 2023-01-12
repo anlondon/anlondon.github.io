@@ -1894,6 +1894,10 @@ pre .javascript .function {
 .post-toc-wrap::-webkit-scrollbar-track {
   background: transparent;
 }
+.post-toc-wrap .post-toc {
+  background: var(--header-transparent-background-3);
+  border-radius: 0.4rem;
+}
 .post-toc-wrap .post-toc ol {
   margin: 0;
   padding: 0 0.1rem 0.8rem 0.6rem;
@@ -2668,6 +2672,7 @@ pre .javascript .function {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  background-position-y: 70px;
 }
 @media (max-width: 800px) {
   .first-screen-container {

@@ -2449,13 +2449,13 @@ pre .javascript .function {
   font-size: 1rem;
 }
 .footer {
-  color: var(--text-color-4);
+  color: var(--text-color-1);
   font-size: 1rem;
   background: var(--header-transparent-background-2);
   padding-top: 1em;
 }
 .footer a {
-  color: var(--text-color-4);
+  color: var(--text-color-1);
 }
 .footer a:hover {
   color: var(--primary-color);
@@ -2466,7 +2466,7 @@ pre .javascript .function {
 }
 .footer .info-item {
   margin: 0.3rem 0;
-  color: var(--text-color-4);
+  color: var(--text-color-1);
 }
 .footer .info-item.ypyun-info a {
   display: flex;
@@ -2679,7 +2679,6 @@ pre .javascript .function {
   text-align: center;
   background: var(--header-transparent-background-2);
   border-radius: 5px;
-  color: #fff !important;
 }
 .first-screen-container .content .description .desc-item {
   color: var(--text-color-3);

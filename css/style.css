@@ -561,13 +561,6 @@ button {
   display: block;
   max-height: 10rem;
 }
-.background-my {
-  background: url("$temp-img") center center/cover no-repeat;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-  position: fixed;
-}
 .keep-markdown-body {
   font-size: 1rem;
 }
@@ -2715,6 +2708,13 @@ pre .javascript .function {
 }
 .first-screen-container .content .s-icon-list .s-icon-item i {
   color: var(--text-color-3);
+}
+.background-my {
+  background: url("https://api.likepoems.com/img/aliyun/nature") center center/cover no-repeat;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  position: fixed;
 }
 .zoom-in-image-mask {
   position: fixed;

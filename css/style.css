@@ -2797,7 +2797,7 @@ pre .javascript .function {
   color: var(--text-color-3);
 }
 .background-my {
-  background: url("https://api.likepoems.com/img/aliyun/nature") center center/cover no-repeat;
+  background: url("https://api.likepoems.com/img/nature") center center/cover no-repeat;
   height: 100%;
   width: 100%;
   z-index: 0;
